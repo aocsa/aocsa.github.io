@@ -11,33 +11,38 @@ const InitPage = ({ name, education, bio }) => {
     <span className="tags top-tags"> &nbsp;&nbsp;&nbsp;&lt;body&gt;</span>
     <div className="text-zone">
       <h1 aria-label=" Hola, Soy..." className="blast-root">
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>H</span>
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>o</span>
-        <span className="blast" aria-hidden="true" style={{ opacity: "1" }}>l</span>
-        <span className="blast" aria-hidden="true" style={{ opacity: "1" }}>a</span>
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>,</span><br></br>
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>S</span>
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>o</span>
-        <span className="blast" aria-hidden="true" style={{ opacity: "1" }}>y&nbsp;</span>
         <span className="blast" aria-hidden="true" style={{opacity: "1"}}>A</span>
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>y</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>l</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>e</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>x</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>a</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>n</span>
         <span className="blast" aria-hidden="true" style={{opacity: "1"}}>d</span>
         <span className="blast" aria-hidden="true" style={{opacity: "1"}}>e</span>
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>e</span>
+        <span className="blast" aria-hidden="true" style={{ opacity: "1" }}>r&nbsp;</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>O</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>c</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>s</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>a</span>
         <span className="blast" aria-hidden="true" style={{opacity: "1"}}>,</span><br></br>
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>W</span>
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>e</span>
-        <span className="blast" aria-hidden="true" style={{ opacity: "1" }}>b&nbsp;</span>
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>D</span>
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>e</span>
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>v</span>
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>e</span>
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>l</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>P</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>h</span>
+        <span className="blast" aria-hidden="true" style={{ opacity: "1" }}>D in &nbsp;</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>C</span>
         <span className="blast" aria-hidden="true" style={{opacity: "1"}}>o</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>m</span>
         <span className="blast" aria-hidden="true" style={{opacity: "1"}}>p</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>u</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>t</span>
         <span className="blast" aria-hidden="true" style={{opacity: "1"}}>e</span>
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>r</span>
-        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>.</span>
+        <span className="blast" aria-hidden="true" style={{ opacity: "1" }}>r &nbsp;</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>S</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>c</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>i</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>e</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>n</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>c</span>
+        <span className="blast" aria-hidden="true" style={{opacity: "1"}}>e</span>
       </h1>
       <h2>Front End Developer / Javascript / React / Redux</h2> 
       <NavLink className="flat-button" to={"/contact"}>CONTÁCTAME</NavLink>
