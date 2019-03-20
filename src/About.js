@@ -58,20 +58,19 @@ const SecondPage = ({bio1, bio2, bio3}) => {
 }
 
 const About = ({ mydata }) => {  
-      const aboutComponent = mydata.map((item, index) => {
-        return <SecondPage
-            key={index}
-            bio1={item.bio[0]}
-            bio2={item.bio[1]}
-            bio3={item.bio[2]}
-            index={index}
-        />
-      })
+      const index = 0;
+      const about_me = mydata.about_me;
       return (
         <div>
             <Header/>
             <section >
-                {aboutComponent}
+                    <SecondPage
+                    key={index}
+                    bio1={about_me.summary[0]}
+                    bio2={about_me.summary[1]}
+                    bio3={about_me.summary[2]}
+                    index={index}
+                />
             </section>
         </div>
       )

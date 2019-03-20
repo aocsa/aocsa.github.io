@@ -10,7 +10,7 @@ const InitPage = ({ name, education, bio }) => {
   <div className="container home-page" style={{opacity: 1, transform: "matrix(1, 0, 0, 1, 0, 0)"}}>
     <span className="tags top-tags"> &nbsp;&nbsp;&nbsp;&lt;body&gt;</span>
     <div className="text-zone">
-      <h1 aria-label=" Hola, Soy  ydee,web developer." className="blast-root">
+      <h1 aria-label=" Hola, Soy..." className="blast-root">
         <span className="blast" aria-hidden="true" style={{opacity: "1"}}>H</span>
         <span className="blast" aria-hidden="true" style={{opacity: "1"}}>o</span>
         <span className="blast" aria-hidden="true" style={{ opacity: "1" }}>l</span>
@@ -50,20 +50,18 @@ const InitPage = ({ name, education, bio }) => {
 }
 
 const Home = ({ mydata }) => {  
-      const listComponent = mydata.map((item, index) => {
-        return <InitPage
-          key={index}
-          name={item.name}
-          education={item.education}
-          bio={item.bio}
-          index={index}
-        />
-      })
+      let about_me = mydata.about_me;
       return (
         <div>
           <Header />
           <section >
-            {listComponent}
+            <InitPage
+              key={0}
+              name={about_me.fullname}
+              education={about_me.title}
+              bio={about_me.summary}
+              index={0}
+            />
           </section>
         </div>)
     }
