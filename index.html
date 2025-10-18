@@ -1,11 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexander Ocsa - Profile Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alexander Ocsa | Professional Profile — GPU Query Engine & Optimization</title>
+  <meta name="description" content="PhD in Computer Science with 10+ years in performance optimization, GPU computing, query engines, and open-source contributions (PyTorch, Apache Arrow, NVIDIA RAPIDS AI)." />
 </head>
-<body>
-    <iframe src="https://profile.fyi/aocsa" width="100%" height="100%" style="border:none; position: absolute; top: 0; left: 0; bottom: 0; right: 0;"></iframe>
+<body style="margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height:1.6; background:#0b0c10; color:#e5e7eb;">
+  <!-- Sticky Header / Nav -->
+  <header id="site-header" style="position:sticky; top:0; z-index:100; backdrop-filter:saturate(180%) blur(10px); background:rgba(17,24,39,0.7); border-bottom:1px solid rgba(148,163,184,0.15);">
+    <div style="max-width:1100px; margin:0 auto; padding:12px 20px; display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div aria-hidden="true" style="width:10px; height:10px; border-radius:50%; background:radial-gradient(circle at 30% 30%, #93c5fd, #2563eb);"></div>
+        <a href="#top" style="color:inherit; text-decoration:none; font-weight:700; letter-spacing:0.3px;">Alexander Ocsa</a>
+      </div>
+      <nav aria-label="Primary" style="display:flex; gap:18px; align-items:center;">
+        <a href="#about" style="color:inherit; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">About</a>
+        <a href="#expertise" style="color:inherit; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Expertise</a>
+        <a href="#connect" style="color:inherit; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Connect</a>
+        <button id="themeToggle" type="button" aria-label="Toggle theme" style="border:1px solid rgba(148,163,184,0.3); background:transparent; color:inherit; padding:6px 10px; border-radius:999px; cursor:pointer;">
+          🌗 Mode
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="top" style="max-width:1100px; margin:0 auto; padding:28px 20px 64px 20px;">
+    <!-- Hero / Intro -->
+    <section id="about" data-reveal style="margin-top:8px; padding:24px; border:1px solid rgba(148,163,184,0.2); border-radius:16px; background:rgba(2,6,23,0.35); box-shadow:0 10px 25px rgba(0,0,0,0.25);">
+      <div style="display:flex; align-items:flex-start; gap:18px; flex-wrap:wrap;">
+        <div aria-hidden="true" style="font-size:28px;">⚡️</div>
+        <div>
+          <h1 style="margin:0 0 8px 0; font-size:28px; letter-spacing:0.2px;">Performance Optimization & GPU-Accelerated Computing</h1>
+          <p id="profileText" style="margin:0 0 10px 0; color:#cbd5e1;">
+            I hold a PhD in Computer Science and bring over a decade of experience in software engineering, with a specialization in performance optimization and GPU-accelerated computing. Throughout my career, I have led significant advancements in query engine optimization, numerical computing, and deep learning, contributing to high-impact open-source projects like PyTorch, Apache Arrow, and NVIDIA RAPIDS AI.
+          </p>
+          <p style="margin:0 0 10px 0; color:#cbd5e1;">
+            Currently, I work as a <strong>Staff Software Engineer at VoltronData</strong> as part of the <strong>Theseus</strong> team, where we are building a GPU Query Engine capable of handling petabyte-scale data. My focus is on optimizing complex data operations to make them faster and more efficient, empowering organizations to maximize the value of their data.
+          </p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;">
+            <span style="display:inline-block; padding:6px 10px; border:1px solid rgba(148,163,184,0.35); border-radius:999px; font-size:12px; color:#e5e7eb;">PhD — Computer Science</span>
+            <span style="display:inline-block; padding:6px 10px; border:1px solid rgba(148,163,184,0.35); border-radius:999px; font-size:12px; color:#e5e7eb;">Staff Software Engineer</span>
+            <span style="display:inline-block; padding:6px 10px; border:1px solid rgba(148,163,184,0.35); border-radius:999px; font-size:12px; color:#e5e7eb;">VoltronData — Theseus</span>
+            <span style="display:inline-block; padding:6px 10px; border:1px solid rgba(148,163,184,0.35); border-radius:999px; font-size:12px; color:#e5e7eb;">Open Source: PyTorch • Arrow • RAPIDS</span>
+          </div>
+          <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;">
+            <button id="copyProfile" type="button" style="border:1px solid rgba(148,163,184,0.35); background:transparent; color:inherit; padding:10px 14px; border-radius:12px; cursor:pointer;">Copy summary</button>
+            <button id="printPage" type="button" style="border:1px solid rgba(148,163,184,0.35); background:transparent; color:inherit; padding:10px 14px; border-radius:12px; cursor:pointer;">Print</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertise -->
+    <section id="expertise" data-reveal style="margin-top:28px;">
+      <h2 style="margin:0 0 12px 0; font-size:24px; letter-spacing:0.2px;">Core Expertise</h2>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px;">
+        <!-- Card 1 -->
+        <article data-card style="padding:18px; border:1px solid rgba(148,163,184,0.25); border-radius:14px; background:rgba(2,6,23,0.35); box-shadow:0 6px 18px rgba(0,0,0,0.25);">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+            <span aria-hidden="true" style="font-size:20px;">🧭</span>
+            <h3 style="margin:0; font-size:18px;">Advanced Query Optimization</h3>
+          </div>
+          <p style="margin:6px 0 0 0; color:#cbd5e1;">Enhancing database system throughput and responsiveness through advanced indexing and optimization techniques.</p>
+        </article>
+
+        <!-- Card 2 -->
+        <article data-card style="padding:18px; border:1px solid rgba(148,163,184,0.25); border-radius:14px; background:rgba(2,6,23,0.35); box-shadow:0 6px 18px rgba(0,0,0,0.25);">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+            <span aria-hidden="true" style="font-size:20px;">🚀</span>
+            <h3 style="margin:0; font-size:18px;">GPU Acceleration</h3>
+          </div>
+          <p style="margin:6px 0 0 0; color:#cbd5e1;">Achieving <strong>10×–50×</strong> speedups for data‑intensive tasks using CUDA and libraries like PyTorch and cuDF.</p>
+        </article>
+
+        <!-- Card 3 -->
+        <article data-card style="padding:18px; border:1px solid rgba(148,163,184,0.25); border-radius:14px; background:rgba(2,6,23,0.35); box-shadow:0 6px 18px rgba(0,0,0,0.25);">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+            <span aria-hidden="true" style="font-size:20px;">🧩</span>
+            <h3 style="margin:0; font-size:18px;">Sparse Tensor Support</h3>
+          </div>
+          <p style="margin:6px 0 0 0; color:#cbd5e1;">Contributing to PyTorch’s sparse tensor capabilities for efficient processing of large‑scale, sparse datasets.</p>
+        </article>
+
+        <!-- Card 4 -->
+        <article data-card style="padding:18px; border:1px solid rgba(148,163,184,0.25); border-radius:14px; background:rgba(2,6,23,0.35); box-shadow:0 6px 18px rgba(0,0,0,0.25);">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+            <span aria-hidden="true" style="font-size:20px;">🧠</span>
+            <h3 style="margin:0; font-size:18px;">Algorithm Design</h3>
+          </div>
+          <p style="margin:6px 0 0 0; color:#cbd5e1;">Developing innovative solutions for big‑data processing challenges, with a focus on scalability and efficiency.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Connect -->
+    <section id="connect" data-reveal style="margin-top:32px; padding:24px; border:1px solid rgba(148,163,184,0.2); border-radius:16px; background:rgba(2,6,23,0.35); box-shadow:0 8px 22px rgba(0,0,0,0.25);">
+      <div style="display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap;">
+        <div aria-hidden="true" style="font-size:26px;">🤝</div>
+        <div>
+          <h2 style="margin:0 0 10px 0; font-size:22px; letter-spacing:0.2px;">Let’s Connect</h2>
+          <p style="margin:0 0 14px 0; color:#cbd5e1;">
+            I’m deeply passionate about data structures and algorithms, especially how they evolve and scale. I enjoy solving the complex puzzles of system optimization, where each improvement brings new possibilities and challenges. If you share an interest in these topics, feel free to connect with me!
+          </p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a id="mailtoBtn" href="mailto:?subject=Let%27s%20connect&body=Hi!%20I%27d%20love%20to%20chat%20about%20GPU%20computing%20and%20optimization." style="display:inline-block; border:1px solid rgba(148,163,184,0.35); padding:10px 14px; border-radius:12px; color:inherit; text-decoration:none;">Email me</a>
+            <button id="copyLink" type="button" style="border:1px solid rgba(148,163,184,0.35); background:transparent; color:inherit; padding:10px 14px; border-radius:12px; cursor:pointer;">Copy page link</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Back to top button -->
+  <button id="toTop" aria-label="Back to top" title="Back to top" style="position:fixed; right:16px; bottom:16px; padding:10px 12px; border-radius:999px; border:1px solid rgba(148,163,184,0.35); background:rgba(2,6,23,0.6); color:inherit; cursor:pointer; display:none;">↑</button>
+
+  <!-- Footer -->
+  <footer style="max-width:1100px; margin:0 auto 28px auto; padding:0 20px; color:#94a3b8;">
+    <div style="border-top:1px solid rgba(148,163,184,0.2); padding-top:12px; font-size:12px;">Built with plain HTML, inline CSS, and modern JavaScript. ✨</div>
+  </footer>
+
+  <!-- Modern JavaScript (no frameworks) -->
+  <script>
+    // Smooth-scroll for in-page anchors
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var id = this.getAttribute('href');
+        if (id.length > 1) {
+          e.preventDefault();
+          var el = document.querySelector(id);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // IntersectionObserver reveal animations using inline styles
+    (function revealOnScroll(){
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            el.style.transition = 'opacity 600ms ease, transform 600ms ease';
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('[data-reveal]').forEach(function (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(12px)';
+        observer.observe(el);
+      });
+    })();
+
+    // Back-to-top visibility + action
+    (function backToTop(){
+      var btn = document.getElementById('toTop');
+      window.addEventListener('scroll', function(){
+        btn.style.display = window.scrollY > 480 ? 'inline-block' : 'none';
+      });
+      btn.addEventListener('click', function(){
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+
+    // Copy summary text
+    (function copySummary(){
+      var btn = document.getElementById('copyProfile');
+      if (!btn) return;
+      btn.addEventListener('click', function(){
+        var text = document.getElementById('profileText').innerText.trim();
+        navigator.clipboard.writeText(text).then(function(){
+          btn.innerText = 'Copied!';
+          setTimeout(function(){ btn.innerText = 'Copy summary'; }, 1400);
+        }).catch(function(){
+          alert('Copy failed — your browser may not allow clipboard access here.');
+        });
+      });
+    })();
+
+    // Copy current page link
+    (function copyLink(){
+      var btn = document.getElementById('copyLink');
+      if (!btn) return;
+      btn.addEventListener('click', function(){
+        navigator.clipboard.writeText(window.location.href).then(function(){
+          btn.innerText = 'Link copied!';
+          setTimeout(function(){ btn.innerText = 'Copy page link'; }, 1400);
+        });
+      });
+    })();
+
+    // Print page
+    (function printPage(){
+      var btn = document.getElementById('printPage');
+      if (!btn) return;
+      btn.addEventListener('click', function(){
+        window.print();
+      });
+    })();
+
+    // Simple light/dark theme handling via inline styles
+    (function theming(){
+      var body = document.body;
+      var header = document.getElementById('site-header');
+      var cards = Array.prototype.slice.call(document.querySelectorAll('[data-card]'));
+      var revealBlocks = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+      var toggle = document.getElementById('themeToggle');
+
+      var colors = {
+        light: {
+          bg: '#ffffff', text: '#111827', sub: '#374151', card: '#f9fafb', border: 'rgba(17,24,39,0.12)', shadow: 'rgba(0,0,0,0.06)', header: 'rgba(255,255,255,0.7)'
+        },
+        dark: {
+          bg: '#0b0c10', text: '#e5e7eb', sub: '#cbd5e1', card: 'rgba(2,6,23,0.35)', border: 'rgba(148,163,184,0.25)', shadow: 'rgba(0,0,0,0.25)', header: 'rgba(17,24,39,0.7)'
+        }
+      };
+
+      function applyTheme(mode){
+        var c = colors[mode];
+        body.style.background = c.bg;
+        body.style.color = c.text;
+        header.style.background = c.header;
+        header.style.borderBottom = '1px solid ' + (mode === 'light' ? 'rgba(17,24,39,0.12)' : 'rgba(148,163,184,0.15)');
+
+        revealBlocks.forEach(function (el) {
+          el.style.borderColor = (mode === 'light' ? 'rgba(17,24,39,0.12)' : 'rgba(148,163,184,0.2)');
+          el.style.background = (mode === 'light' ? '#ffffff' : colors.dark.card);
+          el.style.boxShadow = (mode === 'light' ? '0 10px 25px ' + colors.light.shadow : '0 10px 25px ' + colors.dark.shadow);
+        });
+        cards.forEach(function (el) {
+          el.style.borderColor = (mode === 'light' ? colors.light.border : colors.dark.border);
+          el.style.background = (mode === 'light' ? colors.light.card : colors.dark.card);
+          el.style.boxShadow = (mode === 'light' ? '0 6px 18px ' + colors.light.shadow : '0 6px 18px ' + colors.dark.shadow);
+          var ps = el.querySelectorAll('p');
+          ps.forEach(function(p){ p.style.color = (mode === 'light' ? colors.light.sub : colors.dark.sub); });
+        });
+
+        // Update paragraph subtle color globally for sections
+        document.querySelectorAll('p').forEach(function(p){
+          if (p.id !== 'profileText') {
+            p.style.color = (mode === 'light' ? colors.light.sub : colors.dark.sub);
+          }
+        });
+
+        localStorage.setItem('theme', mode);
+        toggle.innerText = (mode === 'light') ? '🌙 Dark' : '🌞 Light';
+      }
+
+      // Init theme based on saved pref or system
+      var saved = localStorage.getItem('theme');
+      var preferredDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var initial = saved || (preferredDark ? 'dark' : 'light');
+      applyTheme(initial);
+
+      toggle.addEventListener('click', function(){
+        var next = (localStorage.getItem('theme') === 'light') ? 'dark' : 'light';
+        applyTheme(next);
+      });
+    })();
+  </script>
 </body>
 </html>
