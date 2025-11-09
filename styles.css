@@ -1,0 +1,431 @@
+/**
+ * Alexander Ocsa - Professional Profile Styles
+ * Modern, responsive design with dark/light theme support
+ */
+
+:root {
+  /* Dark theme (default) */
+  --bg-dark: #0b0c10;
+  --text-dark: #e5e7eb;
+  --sub-text-dark: #cbd5e1;
+  --card-bg-dark: rgba(2, 6, 23, 0.35);
+  --border-dark: rgba(148, 163, 184, 0.25);
+  --shadow-dark: rgba(0, 0, 0, 0.25);
+  --header-bg-dark: rgba(17, 24, 39, 0.7);
+  --header-border-dark: rgba(148, 163, 184, 0.15);
+
+  /* Light theme */
+  --bg-light: #ffffff;
+  --text-light: #111827;
+  --sub-text-light: #374151;
+  --card-bg-light: #f9fafb;
+  --border-light: rgba(17, 24, 39, 0.12);
+  --shadow-light: rgba(0, 0, 0, 0.06);
+  --header-bg-light: rgba(255, 255, 255, 0.7);
+  --header-border-light: rgba(17, 24, 39, 0.12);
+
+  /* Accent colors */
+  --accent-blue: #2563eb;
+  --accent-blue-light: #93c5fd;
+  --focus-color: #3b82f6;
+}
+
+/* Base styles */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Skip to main content link (accessibility) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 200;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+/* Header / Navigation */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: saturate(180%) blur(10px);
+  background: var(--header-bg-dark);
+  border-bottom: 1px solid var(--header-border-dark);
+}
+
+.header-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--accent-blue-light), var(--accent-blue));
+}
+
+.brand-link {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+nav a {
+  color: inherit;
+  text-decoration: none;
+  transition: text-decoration 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+nav a:focus {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Buttons */
+button {
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: transparent;
+  color: inherit;
+  padding: 10px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: var(--focus-color);
+}
+
+button:focus {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+#themeToggle {
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+/* Main content */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 20px 64px 20px;
+}
+
+/* Sections */
+section {
+  padding: 24px;
+  border: 1px solid var(--border-dark);
+  border-radius: 16px;
+  background: var(--card-bg-dark);
+  box-shadow: 0 10px 25px var(--shadow-dark);
+}
+
+#about {
+  margin-top: 8px;
+}
+
+.section-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.section-icon {
+  font-size: 28px;
+}
+
+section h1 {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  letter-spacing: 0.2px;
+}
+
+section h2 {
+  margin: 0 0 10px 0;
+  font-size: 22px;
+  letter-spacing: 0.2px;
+}
+
+section p {
+  margin: 0 0 10px 0;
+  color: var(--sub-text-dark);
+}
+
+/* Tags / Badges */
+.tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 10px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--text-dark);
+}
+
+/* Action buttons container */
+.actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Expertise section */
+#expertise {
+  margin-top: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+#expertise h2 {
+  margin: 0 0 12px 0;
+  font-size: 24px;
+  letter-spacing: 0.2px;
+}
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+/* Cards */
+.card {
+  padding: 18px;
+  border: 1px solid var(--border-dark);
+  border-radius: 14px;
+  background: var(--card-bg-dark);
+  box-shadow: 0 6px 18px var(--shadow-dark);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--shadow-dark);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.card-icon {
+  font-size: 20px;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.card p {
+  margin: 6px 0 0 0;
+  color: var(--sub-text-dark);
+}
+
+/* Connect section */
+#connect {
+  margin-top: 32px;
+}
+
+.connect-content {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.connect-icon {
+  font-size: 26px;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.link-button {
+  display: inline-block;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.link-button:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: var(--focus-color);
+}
+
+/* Back to top button */
+#toTop {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(10px);
+  color: inherit;
+  cursor: pointer;
+  display: none;
+  transition: all 0.2s ease;
+}
+
+#toTop:hover {
+  background: rgba(59, 130, 246, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+  max-width: 1100px;
+  margin: 0 auto 28px auto;
+  padding: 0 20px;
+  color: #94a3b8;
+}
+
+.footer-content {
+  border-top: 1px solid var(--border-dark);
+  padding-top: 12px;
+  font-size: 12px;
+}
+
+/* Reveal animations */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  nav {
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  section h1 {
+    font-size: 24px;
+  }
+
+  section h2 {
+    font-size: 20px;
+  }
+
+  .expertise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-container {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 20px 16px 48px 16px;
+  }
+
+  section {
+    padding: 18px;
+  }
+
+  .section-icon,
+  .connect-icon {
+    font-size: 22px;
+  }
+
+  section h1 {
+    font-size: 22px;
+  }
+}
+
+/* Print styles */
+@media print {
+  header {
+    position: static;
+    border-bottom: 2px solid #000;
+  }
+
+  #toTop,
+  button,
+  .link-button {
+    display: none;
+  }
+
+  section {
+    border: 1px solid #000;
+    page-break-inside: avoid;
+  }
+}
