@@ -33,11 +33,13 @@
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#0b0c10">
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200;300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/styles.css">
-
-  <!-- Preconnect for performance (future use) -->
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 </head>
 <body>
   <!-- Skip to main content (accessibility) -->
@@ -46,9 +48,6 @@
   <!-- Sticky Header / Nav -->
   <header id="site-header">
     <div class="header-container">
-      <div class="header-brand">
-        <a href="#hero" class="brand-link">Alexander Ocsa</a>
-      </div>
       <nav aria-label="Primary">
         <a href="#about">About</a>
         <a href="#work">Work</a>
@@ -57,7 +56,9 @@
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
         <button id="themeToggle" type="button" aria-label="Toggle theme">
-          🌗 Mode
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+          </svg>
         </button>
       </nav>
     </div>
@@ -457,24 +458,24 @@
 
       var colors = {
         light: {
-          bg: '#ffffff',
-          text: '#111827',
-          subText: '#1f2937',
-          cardBg: '#f9fafb',
-          border: 'rgba(17,24,39,0.12)',
-          shadow: 'rgba(0,0,0,0.06)',
-          headerBg: 'rgba(255,255,255,0.7)',
-          headerBorder: 'rgba(17,24,39,0.12)'
+          bg: '#f4f1ed',
+          text: '#2d2d2d',
+          subText: '#5a5a5a',
+          cardBg: '#fafaf9',
+          border: 'rgba(45,45,45,0.08)',
+          shadow: 'rgba(45,45,45,0.04)',
+          headerBg: 'rgba(250,250,249,0.85)',
+          headerBorder: 'rgba(45,45,45,0.06)'
         },
         dark: {
-          bg: '#0b0c10',
-          text: '#e5e7eb',
-          subText: '#cbd5e1',
-          cardBg: 'rgba(2,6,23,0.35)',
-          border: 'rgba(148,163,184,0.25)',
-          shadow: 'rgba(0,0,0,0.25)',
-          headerBg: 'rgba(17,24,39,0.7)',
-          headerBorder: 'rgba(148,163,184,0.15)'
+          bg: '#1a1816',
+          text: '#f5f3f0',
+          subText: '#c4c0bb',
+          cardBg: '#252220',
+          border: 'rgba(196,192,187,0.15)',
+          shadow: 'rgba(0,0,0,0.3)',
+          headerBg: 'rgba(37,34,32,0.85)',
+          headerBorder: 'rgba(196,192,187,0.1)'
         }
       };
 
@@ -482,8 +483,29 @@
         var c = colors[mode];
         body.style.background = c.bg;
         body.style.color = c.text;
-        header.style.background = c.headerBg;
-        header.style.borderBottom = '1px solid ' + c.headerBorder;
+
+        // Add/remove dark-mode class for gradient control
+        if (mode === 'dark') {
+          body.classList.add('dark-mode');
+        } else {
+          body.classList.remove('dark-mode');
+        }
+
+        var headerContainer = document.querySelector('.header-container');
+        if (headerContainer) {
+          headerContainer.style.background = c.headerBg;
+          headerContainer.style.borderColor = c.headerBorder;
+        }
+
+        // Update nav hover background color
+        var style = document.getElementById('nav-hover-style');
+        if (!style) {
+          style = document.createElement('style');
+          style.id = 'nav-hover-style';
+          document.head.appendChild(style);
+        }
+        var hoverBg = mode === 'light' ? 'rgba(45, 45, 45, 0.06)' : 'rgba(245, 243, 240, 0.08)';
+        style.textContent = 'nav a:hover, #themeToggle:hover { background: ' + hoverBg + ' !important; }';
 
         // Update sections and cards
         document.querySelectorAll('section').forEach(function (el) {
@@ -549,13 +571,20 @@
         document.querySelector('.footer-content').style.borderTopColor = c.border;
 
         localStorage.setItem('theme', mode);
-        toggle.innerText = (mode === 'light') ? '🌙 Dark' : '🌞 Light';
+
+        // Update theme toggle icon
+        if (mode === 'light') {
+          toggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
+          toggle.setAttribute('aria-label', 'Switch to dark mode');
+        } else {
+          toggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>';
+          toggle.setAttribute('aria-label', 'Switch to light mode');
+        }
       }
 
-      // Initialize theme based on saved preference or system
+      // Initialize theme based on saved preference or default to light
       var saved = localStorage.getItem('theme');
-      var preferredDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var initial = saved || (preferredDark ? 'dark' : 'light');
+      var initial = saved || 'light';
       applyTheme(initial);
 
       toggle.addEventListener('click', function(){
