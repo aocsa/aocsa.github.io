@@ -16,9 +16,9 @@
   --text-weight--900: 900;
 
   /* Shadow Hierarchy */
-  --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
-  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  --shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+  --shadow-small: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --shadow-medium: 0 2px 4px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.02);
+  --shadow-large: 0 4px 12px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.02);
 
   /* Spacing Layout */
   --spacing-layout--section-padding-lg: 4rem;
@@ -37,14 +37,14 @@
   --header-border-dark: rgba(196, 192, 187, 0.1);
 
   /* Light theme - warm beige/cream aesthetic */
-  --bg-light: #f4f1ed;
+  --bg-light: #f9f7f4;
   --text-light: #2d2d2d;
   --sub-text-light: #5a5a5a;
-  --card-bg-light: #fafaf9;
-  --border-light: rgba(45, 45, 45, 0.08);
-  --shadow-light: rgba(45, 45, 45, 0.04);
-  --header-bg-light: rgba(250, 250, 249, 0.85);
-  --header-border-light: rgba(45, 45, 45, 0.06);
+  --card-bg-light: #ffffff;
+  --border-light: rgba(45, 45, 45, 0.06);
+  --shadow-light: rgba(45, 45, 45, 0.03);
+  --header-bg-light: rgba(255, 255, 255, 0.85);
+  --header-border-light: rgba(45, 45, 45, 0.05);
 
   /* Accent colors - warmer tones */
   --accent-blue: #4a7c9e;
@@ -76,7 +76,7 @@ body {
   position: relative;
 }
 
-/* Gradient background for light mode */
+/* Subtle organic background for light mode */
 body::before {
   content: '';
   position: fixed;
@@ -85,10 +85,9 @@ body::before {
   right: 0;
   bottom: 0;
   background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(250, 248, 245, 0.8) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 50% at 0% 50%, rgba(245, 242, 237, 0.3) 0%, transparent 50%),
-    radial-gradient(ellipse 60% 50% at 100% 50%, rgba(245, 242, 237, 0.3) 0%, transparent 50%),
-    radial-gradient(ellipse 80% 80% at 50% 100%, rgba(240, 237, 232, 0.4) 0%, transparent 50%);
+    radial-gradient(ellipse 120% 100% at 50% 0%, rgba(250, 245, 240, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 10% 20%, rgba(245, 240, 235, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(245, 240, 235, 0.08) 0%, transparent 40%);
   pointer-events: none;
   z-index: -1;
   opacity: 1;
@@ -411,9 +410,9 @@ main {
 section {
   padding: var(--spacing-layout--section-padding-sm);
   border: 1px solid var(--border-light);
-  border-radius: 16px;
+  border-radius: 12px;
   background: #ffffff;
-  box-shadow: var(--shadow-large);
+  box-shadow: var(--shadow-medium);
 }
 
 #about {
@@ -485,15 +484,15 @@ section p {
 .card {
   padding: 18px;
   border: 1px solid var(--border-light);
-  border-radius: 14px;
+  border-radius: 10px;
   background: var(--card-bg-light);
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-small);
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-large);
+  box-shadow: var(--shadow-medium);
 }
 
 .card-header {
@@ -761,15 +760,15 @@ section p {
 .project-card {
   padding: 1.5rem;
   border: 1px solid var(--border-light);
-  border-radius: 14px;
+  border-radius: 10px;
   background: var(--card-bg-light);
-  box-shadow: var(--shadow-medium);
+  box-shadow: var(--shadow-small);
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-large);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
 }
 
 .project-header {
@@ -833,7 +832,7 @@ section p {
   background: var(--card-bg-light);
   border: 1px solid var(--border-light);
   border-radius: 999px;
-  box-shadow: var(--shadow-large);
+  box-shadow: var(--shadow-medium);
 }
 
 .dock-icon {
