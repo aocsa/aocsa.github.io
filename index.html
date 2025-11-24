@@ -35,7 +35,7 @@
 
   <!-- PWA Manifest -->
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#0b0c10">
+  <meta name="theme-color" content="#F5F2EB">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,7 +48,7 @@
   <link rel="stylesheet" href="/styles.css?v=2">
 </head>
 
-<body>
+<body class="light-mode">
 
   <!-- Sticky Header / Nav -->
   <header id="site-header">
@@ -631,7 +631,7 @@
 
       // Initialize theme based on saved preference or default to dark
       var saved = localStorage.getItem('theme');
-      var initial = saved || 'dark';
+      var initial = saved || 'light';
       applyTheme(initial);
 
       toggle.addEventListener('click', function () {
