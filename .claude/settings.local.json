@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:portfolio-magicui.vercel.app)",
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:www.joseocando.com)"
+      "WebFetch(domain:www.joseocando.com)",
+      "Bash(open:*)"
     ],
     "deny": [],
     "ask": []
