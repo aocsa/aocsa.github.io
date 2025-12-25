@@ -1,7 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="76" fill="#111"/>
-  <!-- A - positioned left -->
-  <path fill="#fff" d="M64 388l68-264h52l68 264h-46l-14-54H124l-14 54H64zm76-98h48l-24-92-24 92z"/>
-  <!-- O - positioned right -->
-  <path fill="#fff" d="M280 256c0-72 40-132 104-132s104 60 104 132-40 132-104 132-104-60-104-132zm48 0c0 48 24 88 56 88s56-40 56-88-24-88-56-88-56 40-56 88z"/>
+  <rect width="512" height="512" rx="96" fill="#111"/>
+  <!-- Modern geometric A -->
+  <path fill="#fff" d="M256 80L128 432h56l24-72h96l24 72h56L256 80zm0 96l32 112h-64l32-112z"/>
 </svg>

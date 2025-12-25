@@ -485,17 +485,11 @@ section {
   border: 1px solid var(--border-color);
 }
 
-/* Project-specific icon colors */
-.highlight-icon.pytorch-icon {
-  color: #EE4C2C;
-}
-
-.highlight-icon.arrow-icon {
-  color: #00D1B2;
-}
-
+/* Project icons - grayscale */
+.highlight-icon.pytorch-icon,
+.highlight-icon.arrow-icon,
 .highlight-icon.rapids-icon {
-  color: #7400FF;
+  color: var(--text-primary);
 }
 
 .highlight-content h4 {
