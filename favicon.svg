@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="96" fill="#111111"/>
-  <!-- A letter -->
-  <path d="M108 380L196 132h48l88 248h-52l-18-56h-84l-18 56H108zm88-96h56l-28-88-28 88z" fill="#ffffff"/>
-  <!-- O letter -->
-  <path d="M344 380V132h56c60 0 92 40 92 124s-32 124-92 124h-56zm52-44h4c28 0 40-28 40-80s-12-80-40-80h-4v160z" fill="#ffffff"/>
+  <rect width="512" height="512" rx="76" fill="#111"/>
+  <!-- A - positioned left -->
+  <path fill="#fff" d="M64 388l68-264h52l68 264h-46l-14-54H124l-14 54H64zm76-98h48l-24-92-24 92z"/>
+  <!-- O - positioned right -->
+  <path fill="#fff" d="M280 256c0-72 40-132 104-132s104 60 104 132-40 132-104 132-104-60-104-132zm48 0c0 48 24 88 56 88s56-40 56-88-24-88-56-88-56 40-56 88z"/>
 </svg>
