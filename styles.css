@@ -80,6 +80,10 @@ a {
   text-decoration: none;
 }
 
+.font-bold {
+  font-weight: 500;
+}
+
 /* Focus styles for accessibility */
 a:focus-visible,
 button:focus-visible {
