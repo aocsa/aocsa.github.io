@@ -35,25 +35,20 @@
 
   <!-- PWA Manifest -->
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#F5F2EB">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Syne:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet">
+  <meta name="theme-color" content="#ffffff">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="/styles.css?v=2">
+  <link rel="stylesheet" href="/styles.css?v=6">
 </head>
 
-<body class="light-mode">
+<body>
 
-  <!-- Sticky Header / Nav -->
-  <header id="site-header">
+  <!-- Header -->
+  <header>
     <div class="header-container">
-      <!-- Hamburger Menu Button (Mobile Only) -->
+      <a href="#" class="logo">Alexander Ocsa</a>
+
+      <!-- Mobile Menu Toggle -->
       <button id="mobileMenuToggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -65,17 +60,11 @@
 
       <nav id="desktopNav" aria-label="Primary">
         <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#education">Education</a>
         <a href="#skills">Skills</a>
+        <a href="#work">Experience</a>
+        <a href="#education">Education</a>
         <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <button id="themeToggle" type="button" aria-label="Toggle theme">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-          </svg>
-        </button>
+        <a href="#contact" class="nav-contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -94,375 +83,424 @@
     </div>
     <nav aria-label="Mobile navigation">
       <a href="#about">About</a>
-      <a href="#work">Work</a>
-      <a href="#education">Education</a>
       <a href="#skills">Skills</a>
+      <a href="#work">Experience</a>
+      <a href="#education">Education</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
-    <div class="mobile-menu-footer">
-      <button id="themeToggleMobile" type="button" aria-label="Toggle theme">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-        </svg>
-        <span>Toggle Theme</span>
-      </button>
-    </div>
+    <div class="mobile-menu-footer"></div>
   </div>
   <div id="mobileMenuOverlay" class="mobile-menu-overlay"></div>
 
   <!-- Main Content -->
   <main id="main-content" tabindex="-1">
+
     <!-- Hero Section -->
     <section id="hero" data-reveal>
       <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">Alexander Ocsa</h1>
-          <p class="hero-subtitle">System Software Engineer</p>
-          <p class="hero-description">
-            Systems engineer with a PhD in computer science and over a decade of hands-on experience accelerating
-            analytics, I've zeroed in on GPU-accelerated query engines and high-performance numerical computing stacks.
+        <span class="hero-label">System Software Engineer</span>
+        <div class="hero-name">
+          <span class="first">Alexander</span>
+          <span class="last">Ocsa</span>
+        </div>
+        <p class="hero-description">
+          Staff-level systems engineer with a PhD in Computer Science and over a decade of experience accelerating
+          analytics through GPU-powered query engines and numerical computing.
+        </p>
+        <div class="hero-links">
+          <a href="mailto:aocsa.cs@gmail.com" class="hero-link primary">
+            Get in Touch
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="#projects" class="hero-link secondary">View Projects</a>
+        </div>
+        <div class="hero-social">
+          <a href="https://github.com/aocsa" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+              <path d="M9 18c-4.51 2-5-2-7-2" />
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/aocsa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect width="4" height="12" x="2" y="9" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+          </a>
+          <a href="mailto:aocsa.cs@gmail.com" aria-label="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="scroll-indicator">Scroll</div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" data-reveal>
+      <div class="about-grid">
+        <div class="section-header">
+          <p class="section-label">About</p>
+          <h2 class="section-title">Crafting <em>High-Performance</em> Systems at Scale</h2>
+        </div>
+        <div class="about-content">
+          <p>
             Throughout my career, I've crafted sophisticated parallel software that taps into the raw power of diverse
             hardware accelerators—like GPUs, pushing them to their limits in real-world applications.
-            I'm excited to dive in and elevate the functional depth, raw speed, scalability, and rock-solid reliability
+          </p>
+          <p>
+            I'm passionate about elevating the functional depth, raw speed, scalability, and rock-solid reliability
             of those essential data processing operators at the heart of analytics engines or deep learning stacks.
           </p>
-          <div class="hero-links">
-            <a href="mailto:aocsa.cs@gmail.com" class="hero-link" aria-label="Email">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="20" height="16" x="2" y="4" rx="2" />
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-              </svg>
-              <span>Email</span>
-            </a>
-            <a href="https://github.com/aocsa" target="_blank" rel="noopener noreferrer" class="hero-link"
-              aria-label="GitHub">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path
-                  d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                <path d="M9 18c-4.51 2-5-2-7-2" />
-              </svg>
-              <span>GitHub</span>
-            </a>
-            <a href="https://www.linkedin.com/in/aocsa/" target="_blank" rel="noopener noreferrer" class="hero-link"
-              aria-label="LinkedIn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect width="4" height="12" x="2" y="9" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-              <span>LinkedIn</span>
-            </a>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 20h9" />
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                </svg>
+              </div>
+              <div class="highlight-content">
+                <h4>PyTorch Contributor</h4>
+                <p>40+ PRs in Aten/scatter-tensor kernels, numerical accuracy and performance fixes</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6" />
+                  <polyline points="8 6 2 12 8 18" />
+                </svg>
+              </div>
+              <div class="highlight-content">
+                <h4>Apache Arrow</h4>
+                <p>9+ PRs improving performance, new features, and ecosystem interoperability</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="4" width="16" height="16" rx="2" ry="2" />
+                  <rect x="9" y="9" width="6" height="6" />
+                </svg>
+              </div>
+              <div class="highlight-content">
+                <h4>RAPIDS/CUDF</h4>
+                <p>7+ PRs in CUDA primitives and analytics kernels (groupby/join)</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" data-reveal>
-      <h2 class="section-title">About</h2>
-      <div class="section-content">
-        <p>
-          I have actively contributed to several significant open-source projects:
-        </p>
-        <ul class="about-list">
-          <li><strong>PyTorch:</strong> 40+ PRs in Aten / scatter-tensor kernels, numerical accuracy perf fixes, code
-            reviews, and design discussions that improved reliability and throughput for large workloads.</li>
-          <li><strong>Apache Arrow:</strong> +9 PRs Improvements in performance, new features, testing integration, and
-            fixes that enhance ecosystem interoperability.</li>
-          <li><strong>RAPIDS/CUDF:</strong> +7 PRs in CUDA primitives and analytics kernels (groupby/join), plus
-            stability and testing improvements used in production analytics.</li>
-        </ul>
+    <!-- Technical Expertise / Skills Section -->
+    <section id="skills" data-reveal>
+      <div class="skills-container">
+        <div class="section-header">
+          <p class="section-label">Skills</p>
+          <h2 class="section-title">Technical <em>Expertise</em></h2>
+        </div>
+        <div class="skills-grid">
+          <span class="skill-badge">C++</span>
+          <span class="skill-badge">CUDA</span>
+          <span class="skill-badge">Python</span>
+          <span class="skill-badge">PyTorch</span>
+          <span class="skill-badge">Apache Arrow</span>
+          <span class="skill-badge">RAPIDS/cuDF</span>
+          <span class="skill-badge">GPU Computing</span>
+          <span class="skill-badge">Query Engines</span>
+          <span class="skill-badge">Distributed Systems</span>
+          <span class="skill-badge">Performance Optimization</span>
+          <span class="skill-badge">Numerical Computing</span>
+          <span class="skill-badge">Deep Learning</span>
+          <span class="skill-badge">Algorithm Design</span>
+          <span class="skill-badge">Database Systems</span>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">56+</div>
+            <div class="stat-label">Open Source PRs</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">PhD</div>
+            <div class="stat-label">Computer Science</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">5×</div>
+            <div class="stat-label">Performance Gains</div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Work Experience Section -->
     <section id="work" data-reveal>
-      <h2 class="section-title">Work Experience</h2>
-      <div class="timeline">
-        <!-- VoltronData -->
-        <article class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-company">
-              <h3>VoltronData</h3>
-              <span class="company-location">Remote</span>
+      <div class="work-container">
+        <div class="section-header">
+          <p class="section-label">Experience</p>
+          <h2 class="section-title">Professional <em>Journey</em></h2>
+        </div>
+        <div class="timeline">
+          <!-- VoltronData -->
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="timeline-date">2021 — Present</span>
+              <span class="timeline-location">Remote</span>
             </div>
-            <span class="timeline-date">06/2021 — present</span>
-          </div>
-          <p class="timeline-role">Staff Software Engineer</p>
-          <ul class="timeline-details">
-            <li>Designed <strong>physical execution abstractions</strong> with spill paths across <strong>GPU HBM → RAM
-                → Disk</strong>, enabling stable execution of memory-intensive queries.</li>
-            <li>Shaped a <strong>distributed count-distinct algorithm</strong> that delivered <strong>~5×
-                speedup</strong> vs. prior approach at cluster scale.</li>
-            <li>Championed best practices for <strong>code-splitting strategies</strong> introducing leak-spotting
-              structures tuned to join types; improved reliability and tail latencies.</li>
-            <li>Enhanced the <strong>Apache Arrow codebase</strong> by contributing to both C++ and Python, while
-              developing clear, comprehensive documentation to streamline onboarding and support future contributors.
-            </li>
-            <li>Proposed and implemented <strong>core architectural improvements</strong> to the Theseus engine,
-              contributing to scalability and performance enhancements.</li>
-          </ul>
-        </article>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-company">
+                  <h3>VoltronData</h3>
+                </div>
+              </div>
+              <p class="timeline-role">Staff Software Engineer</p>
+              <ul class="timeline-details">
+                <li>Designed <strong>physical execution abstractions</strong> with spill paths across <strong>GPU HBM →
+                    RAM → Disk</strong>, enabling stable execution of memory-intensive queries.</li>
+                <li>Shaped a <strong>distributed count-distinct algorithm</strong> that delivered <strong>~5×
+                    speedup</strong> vs. prior approach at cluster scale.</li>
+                <li>Championed best practices for <strong>code-splitting strategies</strong> introducing leak-spotting
+                  structures tuned to join types.</li>
+                <li>Enhanced the <strong>Apache Arrow codebase</strong> by contributing to both C++ and Python
+                  components.</li>
+                <li>Proposed and implemented <strong>core architectural improvements</strong> to the Theseus engine.
+                </li>
+              </ul>
+            </div>
+          </article>
 
-        <!-- Quansight -->
-        <article class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-company">
-              <h3>Quansight</h3>
-              <span class="company-location">Remote</span>
+          <!-- Quansight -->
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="timeline-date">2020 — 2021</span>
+              <span class="timeline-location">Remote</span>
             </div>
-            <span class="timeline-date">05/2020 — 05/2021</span>
-          </div>
-          <p class="timeline-role">Senior C++ Software Engineer</p>
-          <ul class="timeline-details">
-            <li>Shipped advanced numerical and deep-learning features in <strong>PyTorch</strong>, focusing on
-              high-performance kernels and correctness at scale.</li>
-            <li>Implemented new functionality and optimizations in <strong>C++/CUDA/Python</strong>, improving
-              throughput and reliability across core components used by a large global user base.</li>
-            <li>Built <strong>GPU-accelerated sparse-tensor kernels</strong> and infrastructure enabling efficient
-              processing of large sparse datasets and removing critical bottlenecks.</li>
-            <li>Optimized low-level <strong>ATen operators</strong> and execution paths, eliminating inefficient
-              memory/compute patterns and improving overall performance characteristics.</li>
-            <li>Collaborated in public issues/PRs with maintainers and users to land changes with strong tests and
-              documentation.</li>
-          </ul>
-        </article>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-company">
+                  <h3>Quansight</h3>
+                </div>
+              </div>
+              <p class="timeline-role">Senior C++ Software Engineer</p>
+              <ul class="timeline-details">
+                <li>Shipped advanced numerical and deep-learning features in <strong>PyTorch</strong>, focusing on
+                  high-performance kernels.</li>
+                <li>Implemented new functionality and optimizations in <strong>C++/CUDA/Python</strong>, improving
+                  throughput and reliability.</li>
+                <li>Built <strong>GPU-accelerated sparse-tensor kernels</strong> enabling efficient processing of large
+                  sparse datasets.</li>
+                <li>Optimized low-level <strong>ATen operators</strong> and execution paths, eliminating inefficient
+                  memory/compute patterns.</li>
+              </ul>
+            </div>
+          </article>
 
-        <!-- BlazingDB Inc. -->
-        <article class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-company">
-              <h3>BlazingDB Inc.</h3>
-              <span class="company-location">Lima, Peru</span>
+          <!-- BlazingDB Inc. -->
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="timeline-date">2018 — 2020</span>
+              <span class="timeline-location">Lima, Peru</span>
             </div>
-            <span class="timeline-date">02/2018 — 05/2020</span>
-          </div>
-          <p class="timeline-role">Senior Software Engineer</p>
-          <ul class="timeline-details">
-            <li>Designed the <strong>original execution model</strong> combining three async executors—<strong>compute
-                (libcuDF), comms (UCX/TCP)</strong>, and <strong>memory/spill (host/disk)</strong>—to improve
-              backpressure handling, utilization, and resilience under memory pressure.</li>
-            <li>Built a <strong>UCX-based multipart GPU messaging layer</strong>, increasing network throughput and
-              reducing CPU overhead for distributed queries.</li>
-            <li>Led the <strong>physical plan + cache layers</strong> of a pull-based execution engine, enabling
-              efficient processing of memory-intensive queries and higher sustained throughput.</li>
-            <li>Detected <strong>pre-GA defects ~30%</strong> by overhauling unit/integration tests and CI signal,
-              reducing first-release stability and user experience.</li>
-            <li>Profiled end-to-end system trade-offs (<strong>I/O, messaging, kernel concurrency</strong>) and tuned
-              policies/parameters to unlock better multi-node scalability.</li>
-          </ul>
-        </article>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-company">
+                  <h3>BlazingDB Inc.</h3>
+                </div>
+              </div>
+              <p class="timeline-role">Senior Software Engineer</p>
+              <ul class="timeline-details">
+                <li>Designed the <strong>original execution model</strong> combining three async
+                  executors—<strong>compute (libcuDF), comms (UCX/TCP)</strong>, and <strong>memory/spill
+                    (host/disk)</strong>.</li>
+                <li>Built a <strong>UCX-based multipart GPU messaging layer</strong>, increasing network throughput and
+                  reducing CPU overhead.</li>
+                <li>Led the <strong>physical plan + cache layers</strong> of a pull-based execution engine.</li>
+                <li>Detected <strong>pre-GA defects ~30%</strong> by overhauling unit/integration tests and CI signal.
+                </li>
+              </ul>
+            </div>
+          </article>
 
-        <!-- Laboratoria -->
-        <article class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-company">
-              <h3>Laboratoria</h3>
-              <span class="company-location">Lima, Peru</span>
+          <!-- Laboratoria -->
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="timeline-date">2017 — 2018</span>
+              <span class="timeline-location">Lima, Peru</span>
             </div>
-            <span class="timeline-date">06/2017 — 02/2018</span>
-          </div>
-          <p class="timeline-role">Software Engineer & Bootcamp Teacher</p>
-          <ul class="timeline-details">
-            <li>Led a <strong>teaching and instructional role</strong> as a Bootcamp teacher, guiding and developing
-              talent through comprehensive e-learning platforms and hands-on training.</li>
-            <li>Focused on building skills growth and career readiness in aspiring software developers.</li>
-            <li><strong>Led the development of talento.laboratoria.la</strong>, a networking platform that connected
-              over 300 companies with bootcamp graduates, contributing to 1,000+ successful employment matches. Played a
-              key role in both front-end and back-end development to ensure a seamless user experience and effective
-              platform functionality.</li>
-          </ul>
-        </article>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-company">
+                  <h3>Laboratoria</h3>
+                </div>
+              </div>
+              <p class="timeline-role">Software Engineer & Bootcamp Teacher</p>
+              <ul class="timeline-details">
+                <li>Led a <strong>teaching and instructional role</strong> as a Bootcamp teacher, guiding and developing
+                  talent.</li>
+                <li><strong>Led the development of talento.laboratoria.la</strong>, connecting over 300 companies with
+                  bootcamp graduates, contributing to 1,000+ successful employment matches.</li>
+              </ul>
+            </div>
+          </article>
 
-        <!-- Northern World Entertainment -->
-        <article class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-company">
-              <h3>Northern World Entertainment Software Inc</h3>
-              <span class="company-location">Toronto, Canada</span>
+          <!-- Northern World Entertainment -->
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="timeline-date">2015 — 2016</span>
+              <span class="timeline-location">Toronto, Canada</span>
             </div>
-            <span class="timeline-date">05/2015 — 11/2016</span>
-          </div>
-          <p class="timeline-role">Software Engineer</p>
-          <ul class="timeline-details">
-            <li>Contributed to the development of cutting-edge mobile and game technologies, focusing on
-              <strong>Holographic Mixed Reality Apps</strong> for the Microsoft HoloLens.
-            </li>
-            <li>Successfully launched these applications on both the <strong>iOS and Android platforms</strong>,
-              enhancing user experiences through immersive and innovative technology solutions.</li>
-          </ul>
-        </article>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <div class="timeline-company">
+                  <h3>Northern World Entertainment</h3>
+                </div>
+              </div>
+              <p class="timeline-role">Software Engineer</p>
+              <ul class="timeline-details">
+                <li>Contributed to <strong>Holographic Mixed Reality Apps</strong> for the Microsoft HoloLens.</li>
+                <li>Successfully launched applications on both <strong>iOS and Android platforms</strong>.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
     <!-- Education Section -->
     <section id="education" data-reveal>
-      <h2 class="section-title">Education</h2>
-      <div class="timeline">
-        <!-- PhD -->
-        <article class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-company">
-              <h3>PhD in Computer Science</h3>
-              <span class="company-location">Arequipa, Peru</span>
-            </div>
-            <span class="timeline-date">2013 — 2017</span>
+      <div class="education-container">
+        <div class="section-header">
+          <p class="section-label">Education</p>
+          <h2 class="section-title">Academic <em>Background</em></h2>
+        </div>
+        <div class="education-grid">
+          <div class="education-card">
+            <h3>PhD in Computer Science</h3>
+            <p class="school">Universidad Nacional de San Agustin</p>
+            <p class="year">2013 — 2017 • Arequipa, Peru</p>
+            <p class="honor">Summa cum laude</p>
           </div>
-          <p class="timeline-role">Universidad Nacional de San Agustin</p>
-          <p class="timeline-details-text">Public congratulations for PhD thesis (Summa cum laude)</p>
-        </article>
-
-        <!-- M.Cs -->
-        <article class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-company">
-              <h3>M.Cs in Computer Science and Mathematics</h3>
-              <span class="company-location">Sao Paulo, Brazil</span>
-            </div>
-            <span class="timeline-date">2010 — 2012</span>
+          <div class="education-card">
+            <h3>M.Cs in Computer Science</h3>
+            <p class="school">Sao Paulo University</p>
+            <p class="year">2010 — 2012 • Sao Paulo, Brazil</p>
+            <p class="honor">Maximum Distinction</p>
           </div>
-          <p class="timeline-role">Sao Paulo University</p>
-          <p class="timeline-details-text">Honors: Maximum Distinction</p>
-        </article>
-
-        <!-- B.S. -->
-        <article class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-company">
-              <h3>B.S. in engineering with a major in Computer Science</h3>
-              <span class="company-location">Arequipa, Peru</span>
-            </div>
-            <span class="timeline-date">2004 — 2009</span>
+          <div class="education-card">
+            <h3>B.S. in Computer Science</h3>
+            <p class="school">Universidad Nacional de San Agustin</p>
+            <p class="year">2004 — 2009 • Arequipa, Peru</p>
+            <p class="honor">Ranked 1st in Engineering Class</p>
           </div>
-          <p class="timeline-role">Universidad Nacional de San Agustin</p>
-          <p class="timeline-details-text">Ranked 1st position in Engineering (class 2004-2009)</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" data-reveal>
-      <h2 class="section-title">Skills</h2>
-      <div class="skills-grid">
-        <span class="skill-badge">C++</span>
-        <span class="skill-badge">CUDA</span>
-        <span class="skill-badge">Python</span>
-        <span class="skill-badge">PyTorch</span>
-        <span class="skill-badge">Apache Arrow</span>
-        <span class="skill-badge">RAPIDS/cuDF</span>
-        <span class="skill-badge">GPU Computing</span>
-        <span class="skill-badge">Query Engines</span>
-        <span class="skill-badge">Distributed Systems</span>
-        <span class="skill-badge">Performance Optimization</span>
-        <span class="skill-badge">Numerical Computing</span>
-        <span class="skill-badge">Deep Learning</span>
-        <span class="skill-badge">Algorithm Design</span>
-        <span class="skill-badge">Database Systems</span>
+        </div>
       </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" data-reveal>
-      <h2 class="section-title">Featured Project Contributions</h2>
-      <div class="projects-grid">
-        <article class="project-card">
-          <div class="project-header">
-            <h3>GPU Query Engine (Theseus)</h3>
-            <span class="project-period">2021 — Present</span>
-          </div>
-          <p class="project-description">
-            Building a petabyte-scale GPU-accelerated query engine with advanced memory management and distributed
-            execution capabilities.
-          </p>
-          <div class="project-tags">
-            <span class="tag">C++</span>
-            <span class="tag">CUDA</span>
-            <span class="tag">Apache Arrow</span>
-          </div>
-        </article>
+      <div class="projects-container">
+        <div class="section-header">
+          <p class="section-label">Projects</p>
+          <h2 class="section-title">Featured <em>Work</em></h2>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-header">
+              <h3>GPU Query Engine (Theseus)</h3>
+              <span class="project-period">2021 — Present</span>
+            </div>
+            <p class="project-description">
+              Building a petabyte-scale GPU-accelerated query engine with advanced memory management and distributed
+              execution capabilities.
+            </p>
+            <div class="project-tags">
+              <span class="tag">C++</span>
+              <span class="tag">CUDA</span>
+              <span class="tag">Apache Arrow</span>
+            </div>
+          </article>
 
-        <article class="project-card">
-          <div class="project-header">
-            <h3>PyTorch Sparse Tensors</h3>
-            <span class="project-period">2020 — 2021</span>
-          </div>
-          <p class="project-description">
-            Enhanced PyTorch's sparse tensor capabilities with GPU-accelerated kernels for efficient large-scale sparse
-            dataset processing.
-          </p>
-          <div class="project-tags">
-            <span class="tag">C++</span>
-            <span class="tag">CUDA</span>
-            <span class="tag">Python</span>
-          </div>
-        </article>
+          <article class="project-card">
+            <div class="project-header">
+              <h3>PyTorch Sparse Tensors</h3>
+              <span class="project-period">2020 — 2021</span>
+            </div>
+            <p class="project-description">
+              Enhanced PyTorch's sparse tensor capabilities with GPU-accelerated kernels for efficient large-scale
+              sparse dataset processing.
+            </p>
+            <div class="project-tags">
+              <span class="tag">C++</span>
+              <span class="tag">CUDA</span>
+              <span class="tag">Python</span>
+            </div>
+          </article>
 
-        <article class="project-card">
-          <div class="project-header">
-            <h3>BlazingSQL GPU Query Engine</h3>
-            <span class="project-period">2018 — 2020</span>
-          </div>
-          <p class="project-description">
-            Designed and implemented the distributed GPU SQL engine with UCX-based messaging and pull-based execution
-            model.
-          </p>
-          <div class="project-tags">
-            <span class="tag">C++</span>
-            <span class="tag">CUDA</span>
-            <span class="tag">UCX</span>
-          </div>
-        </article>
+          <article class="project-card">
+            <div class="project-header">
+              <h3>BlazingSQL GPU Query Engine</h3>
+              <span class="project-period">2018 — 2020</span>
+            </div>
+            <p class="project-description">
+              Designed and implemented the distributed GPU SQL engine with UCX-based messaging and pull-based execution
+              model.
+            </p>
+            <div class="project-tags">
+              <span class="tag">C++</span>
+              <span class="tag">CUDA</span>
+              <span class="tag">UCX</span>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" data-reveal>
-      <div class="contact-content-center">
-        <h2>Let's Connect</h2>
+      <div class="contact-container">
+        <p class="contact-label">Contact</p>
+        <h2 class="contact-title">Let's <em>Connect</em></h2>
         <p class="contact-description">
-          I'm deeply passionate about data structures and algorithms, especially how they evolve and scale. I enjoy
-          solving the complex puzzles of system optimization, where each improvement brings new possibilities and
-          challenges.
+          I'm passionate about data structures and algorithms, especially how they evolve and scale.
+          I enjoy solving the complex puzzles of system optimization, where each improvement brings new possibilities.
         </p>
-        <div class="icon-dock">
-          <a href="mailto:aocsa.cs@gmail.com" class="dock-icon" aria-label="Email" title="Email">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="16" x="2" y="4" rx="2" />
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-            </svg>
-          </a>
-          <a href="https://github.com/aocsa" target="_blank" rel="noopener noreferrer" class="dock-icon"
-            aria-label="GitHub" title="GitHub">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        <a href="mailto:aocsa.cs@gmail.com" class="contact-email">aocsa.cs@gmail.com</a>
+        <div class="contact-social">
+          <a href="https://github.com/aocsa" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path
                 d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
               <path d="M9 18c-4.51 2-5-2-7-2" />
             </svg>
           </a>
-          <a href="https://www.linkedin.com/in/aocsa/" target="_blank" rel="noopener noreferrer" class="dock-icon"
-            aria-label="LinkedIn" title="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          <a href="https://www.linkedin.com/in/aocsa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
               <rect width="4" height="12" x="2" y="9" />
               <circle cx="4" cy="4" r="2" />
             </svg>
           </a>
-          <div class="dock-separator"></div>
-          <button id="copyLink" class="dock-icon" type="button" aria-label="Copy page link" title="Copy page link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-            </svg>
-          </button>
         </div>
       </div>
     </section>
@@ -473,10 +511,16 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-content">© 2025 Alexander Ocsa. Built with modern web technologies.</div>
+    <div class="footer-content">
+      <span>© 2025 Alexander Ocsa. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="https://github.com/aocsa" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/aocsa/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
   </footer>
 
-  <!-- Modern JavaScript (no frameworks) -->
+  <!-- JavaScript -->
   <script>
     // Smooth-scroll for in-page anchors
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
@@ -511,37 +555,10 @@
     (function backToTop() {
       var btn = document.getElementById('toTop');
       window.addEventListener('scroll', function () {
-        btn.style.display = window.scrollY > 480 ? 'inline-block' : 'none';
+        btn.style.display = window.scrollY > 480 ? 'flex' : 'none';
       });
       btn.addEventListener('click', function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    })();
-
-
-    // Copy current page link
-    (function copyLink() {
-      var btn = document.getElementById('copyLink');
-      if (!btn) return;
-      var originalHTML = btn.innerHTML;
-      btn.addEventListener('click', function () {
-        navigator.clipboard.writeText(window.location.href).then(function () {
-          btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
-          btn.setAttribute('title', 'Copied!');
-          setTimeout(function () {
-            btn.innerHTML = originalHTML;
-            btn.setAttribute('title', 'Copy page link');
-          }, 2000);
-        });
-      });
-    })();
-
-    // Print page
-    (function printPage() {
-      var btn = document.getElementById('printPage');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        window.print();
       });
     })();
 
@@ -569,83 +586,19 @@
         document.body.style.overflow = '';
       }
 
-      // Open menu
       mobileMenuToggle.addEventListener('click', openMenu);
-
-      // Close menu
       closeMobileMenu.addEventListener('click', closeMenu);
-
-      // Close menu when clicking overlay
       mobileMenuOverlay.addEventListener('click', closeMenu);
 
-      // Close menu when clicking a navigation link
       mobileMenuLinks.forEach(function (link) {
         link.addEventListener('click', closeMenu);
       });
 
-      // Close menu on escape key
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
           closeMenu();
         }
       });
-    })();
-
-    // Light/Dark theme handling with class toggle
-    (function theming() {
-      var body = document.body;
-      var toggle = document.getElementById('themeToggle');
-      var toggleMobile = document.getElementById('themeToggleMobile');
-
-      function applyTheme(mode) {
-        // Toggle light-mode class
-        if (mode === 'light') {
-          body.classList.add('light-mode');
-        } else {
-          body.classList.remove('light-mode');
-        }
-
-        localStorage.setItem('theme', mode);
-
-        // Update theme toggle icons (both desktop and mobile)
-        if (mode === 'light') {
-          var moonIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
-          toggle.innerHTML = moonIcon;
-          toggle.setAttribute('aria-label', 'Switch to dark mode');
-
-          if (toggleMobile) {
-            toggleMobile.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><span>Toggle Theme</span>';
-            toggleMobile.setAttribute('aria-label', 'Switch to dark mode');
-          }
-        } else {
-          var sunIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>';
-          toggle.innerHTML = sunIcon;
-          toggle.setAttribute('aria-label', 'Switch to light mode');
-
-          if (toggleMobile) {
-            toggleMobile.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><span>Toggle Theme</span>';
-            toggleMobile.setAttribute('aria-label', 'Switch to light mode');
-          }
-        }
-      }
-
-      // Initialize theme based on saved preference or default to dark
-      var saved = localStorage.getItem('theme');
-      var initial = saved || 'light';
-      applyTheme(initial);
-
-      toggle.addEventListener('click', function () {
-        var next = (localStorage.getItem('theme') === 'light') ? 'dark' : 'light';
-        applyTheme(next);
-      });
-
-      // Mobile theme toggle
-      if (toggleMobile) {
-        toggleMobile.addEventListener('click', function () {
-          var next = (localStorage.getItem('theme') === 'light') ? 'dark' : 'light';
-          applyTheme(next);
-        });
-      }
     })();
 
     // Register Service Worker

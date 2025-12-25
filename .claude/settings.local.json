@@ -4,7 +4,8 @@
       "WebFetch(domain:portfolio-magicui.vercel.app)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:www.joseocando.com)",
-      "Bash(open:*)"
+      "Bash(open:*)",
+      "Bash(ls:*)"
     ],
     "deny": [],
     "ask": []
