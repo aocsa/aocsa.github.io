@@ -492,7 +492,7 @@ section {
 /* Project icons - grayscale */
 .highlight-icon.pytorch-icon,
 .highlight-icon.arrow-icon,
-.highlight-icon.rapids-icon {
+.highlight-icon.nvidia-icon {
   color: var(--text-primary);
 }
 
