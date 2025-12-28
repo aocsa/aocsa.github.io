@@ -3,7 +3,7 @@
  * Provides offline support and fast caching without external dependencies
  */
 
-const CACHE_NAME = 'aocsa-portfolio-v1';
+const CACHE_NAME = 'aocsa-portfolio-v2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -12,7 +12,10 @@ const urlsToCache = [
   '/favicon.svg',
   '/favicon-16x16.png',
   '/favicon-32x32.png',
-  '/apple-touch-icon.png'
+  '/apple-touch-icon.png',
+  '/blogposts/',
+  '/blogposts/index.html',
+  '/blogposts/posts.json'
 ];
 
 // Install event - cache all essential resources

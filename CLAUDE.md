@@ -4,36 +4,46 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal portfolio website for Alexander Ocsa (aocsa.dev), a System Software Engineer specializing in GPU computing and query engines. This is a static site hosted on GitHub Pages.
+Personal portfolio website for Alexander Ocsa (aocsa.dev), a System Software Engineer specializing in GPU computing and query engines. React SPA with blog, hosted on GitHub Pages.
 
 ## Development
 
-**Local Development:**
 ```bash
-# Serve locally (use any static server)
-python -m http.server 8000
-# or
-npx serve .
+npm install          # Install dependencies
+npm run dev          # Start dev server (http://localhost:5173/)
+npm run build        # Build for production (outputs to dist/)
+npm run preview      # Preview production build
 ```
 
 **Deployment:**
 - Push to `master` branch to deploy via GitHub Pages
 - Custom domain: aocsa.dev (configured in CNAME)
+- Build output in `dist/` folder
 
 ## Architecture
 
-**Static single-page site with no build step:**
-- `index.html` - Complete page structure with all sections (Hero, About, Skills, Expertise, Experience, Education, Projects, Contact)
-- `styles.css` - All styling with CSS custom properties for theming
-- `service-worker.js` - PWA offline caching support
-- `manifest.json` - PWA manifest
+**React SPA with Vite build:**
+- `src/main.tsx` - App entry point
+- `src/App.tsx` - React Router setup
+- `src/components/Layout.tsx` - Shared header & footer
+- `src/pages/` - Page components (Home, Posts, PostView, Projects, Contact)
+- `src/styles/main.css` - All styling
+- `public/posts/` - Markdown blog posts + posts.json manifest
+
+**Routes:**
+- `/` - Home (Hero, About, Skills, Expertise, Work, Education)
+- `/posts` - Blog posts list
+- `/posts/:slug` - Individual blog post
+- `/projects` - Projects page
+- `/contact` - Contact form
 
 **Key Design Patterns:**
-- CSS custom properties defined in `:root` for colors, typography, and spacing
+- CSS custom properties in `:root` for colors, typography, spacing
 - Fonts: Inter (sans-serif) + JetBrains Mono (monospace)
 - Mobile-responsive with slide-out mobile menu
 - Scroll-reveal animations via IntersectionObserver
 - Contact form uses Formspree (no backend required)
+- Markdown rendering with react-markdown, remark-gfm, rehype-highlight
 
 **CSS Variable System:**
 ```css
@@ -42,11 +52,15 @@ npx serve .
 --container-width, --section-padding
 ```
 
-## Cache Busting
+## Adding Blog Posts
 
-When modifying `styles.css`, update the version query parameter in `index.html`:
-```html
-<link rel="stylesheet" href="/styles.css?v=7">
-```
+1. Create markdown file: `public/posts/my-post.md`
+2. Add entry to `public/posts/posts.json`:
+   ```json
+   { "slug": "my-post", "title": "My Post", "date": "2025-01-15", "tags": ["topic"] }
+   ```
+3. Rebuild: `npm run build`
 
-Also update `CACHE_NAME` in `service-worker.js` for PWA cache invalidation.
+## SPA Routing
+
+GitHub Pages uses `public/404.html` to handle client-side routing. This redirects unknown paths to the SPA which React Router then handles.

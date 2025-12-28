@@ -5,7 +5,10 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:www.joseocando.com)",
       "Bash(open:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []
