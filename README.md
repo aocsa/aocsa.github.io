@@ -48,13 +48,21 @@ aocsa.github.io/
 │   ├── App.tsx               # Router setup
 │   ├── components/
 │   │   ├── Layout.tsx        # Header & footer
-│   │   └── TableOfContents.tsx
+│   │   ├── TableOfContents.tsx
+│   │   └── home/             # Home page section components
+│   │       ├── Hero.tsx
+│   │       ├── About.tsx
+│   │       ├── Skills.tsx
+│   │       ├── Expertise.tsx
+│   │       ├── Work.tsx
+│   │       ├── Education.tsx
+│   │       └── Contact.tsx   # Shared: used in Home and /contact page
 │   ├── pages/
-│   │   ├── Home.tsx          # Landing page (Hero, About, Skills, Expertise, Work, Education)
+│   │   ├── Home.tsx          # Landing page (all sections)
 │   │   ├── Posts.tsx         # Posts index page
 │   │   ├── PostView.tsx      # Single post page
 │   │   ├── Projects.tsx      # Projects page
-│   │   └── Contact.tsx       # Contact form page
+│   │   └── Contact.tsx       # Contact page (uses shared component)
 │   ├── types/
 │   │   └── post.ts           # TypeScript interfaces
 │   └── styles/

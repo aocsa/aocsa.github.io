@@ -26,24 +26,25 @@ npm run preview      # Preview production build
 - `src/main.tsx` - App entry point
 - `src/App.tsx` - React Router setup
 - `src/components/Layout.tsx` - Shared header & footer
+- `src/components/home/` - Home page section components
 - `src/pages/` - Page components (Home, Posts, PostView, Projects, Contact)
 - `src/styles/main.css` - All styling
 - `public/posts/` - Markdown blog posts + posts.json manifest
 
 **Routes:**
-- `/` - Home (Hero, About, Skills, Expertise, Work, Education)
+- `/` - Home (Hero, About, Skills, Expertise, Work, Education, Contact)
 - `/posts` - Blog posts list
 - `/posts/:slug` - Individual blog post
 - `/projects` - Projects page
-- `/contact` - Contact form
+- `/contact` - Contact form (also embedded in Home page)
 
 **Key Design Patterns:**
 - CSS custom properties in `:root` for colors, typography, spacing
 - Fonts: Inter (sans-serif) + JetBrains Mono (monospace)
 - Mobile-responsive with slide-out mobile menu
-- Scroll-reveal animations via IntersectionObserver
 - Contact form uses Formspree (no backend required)
 - Markdown rendering with react-markdown, remark-gfm, rehype-highlight
+- Shared components (e.g., Contact) can be used as both sections and standalone pages
 
 **CSS Variable System:**
 ```css
