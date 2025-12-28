@@ -1605,37 +1605,147 @@ span.projects-item-title {
 /* ============================================
    ANIMATIONS
    ============================================ */
+
+/* Base keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Reveal animation base */
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+@keyframes fadeUpSubtle {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.reveal-on-scroll.revealed {
+/* Home page section animations */
+.home-page section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.home-page section.revealed {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Standalone pages - always visible, animate in on load */
+/* Hero is always visible immediately */
+.home-page #hero {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero content staggered animation */
+#hero .hero-label {
+  animation: fadeUpSubtle 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+#hero .hero-name {
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+#hero .hero-description {
+  animation: fadeUpSubtle 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+#hero .hero-links {
+  animation: fadeUpSubtle 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+#hero .hero-social {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}
+
+#hero .scroll-indicator {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+}
+
+/* Standalone pages animation */
 .projects-page,
 .contact-page,
 .posts-page,
 .post-view-page {
-  opacity: 1;
-  animation: fadeUp 0.5s ease forwards;
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Posts page staggered items */
+.posts-page .posts-title {
+  animation: fadeUpSubtle 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.posts-page .posts-year-group {
+  animation: fadeUpSubtle 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+/* Projects page staggered items */
+.projects-page .projects-title {
+  animation: fadeUpSubtle 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.projects-page .projects-item {
+  animation: fadeUpSubtle 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.projects-page .projects-item:nth-child(1) { animation-delay: 0.15s; }
+.projects-page .projects-item:nth-child(2) { animation-delay: 0.2s; }
+.projects-page .projects-item:nth-child(3) { animation-delay: 0.25s; }
+.projects-page .projects-item:nth-child(4) { animation-delay: 0.3s; }
+.projects-page .projects-item:nth-child(5) { animation-delay: 0.35s; }
+.projects-page .projects-item:nth-child(6) { animation-delay: 0.4s; }
+
+/* Post view animation */
+.post-view-page .post-sidebar {
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.post-view-page .post-content {
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+/* Contact page animation */
+.contact-page .contact-header {
+  animation: fadeUpSubtle 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.contact-page .contact-form {
+  animation: fadeUpSubtle 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.contact-page .contact-direct {
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+/* Section content stagger (for revealed home sections) */
+.home-page section.revealed .section-header {
+  animation: fadeUpSubtle 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.home-page section.revealed .about-content,
+.home-page section.revealed .skills-grid,
+.home-page section.revealed .stats-grid,
+.home-page section.revealed .expertise-grid,
+.home-page section.revealed .timeline-alt,
+.home-page section.revealed .education-grid,
+.home-page section.revealed .contact-form {
+  animation: fadeUpSubtle 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
 }
 
 /* ============================================
