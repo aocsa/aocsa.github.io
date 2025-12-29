@@ -10,7 +10,8 @@
     "sync-posts": "node scripts/sync-posts.js",
     "sync-posts:dry": "node scripts/sync-posts.js --dry-run",
     "sync-posts:strip": "node scripts/sync-posts.js --strip-meta",
-    "sync-posts:force": "node scripts/sync-posts.js --force"
+    "sync-posts:force": "node scripts/sync-posts.js --force",
+    "deploy": "bash scripts/deploy.sh"
   },
   "dependencies": {
     "react": "^18.3.1",
