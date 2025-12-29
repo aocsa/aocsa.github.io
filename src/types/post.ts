@@ -6,6 +6,9 @@ export interface Post {
   description?: string
   draft?: boolean
   content?: string
+  sourceRepo?: string
+  prerequisites?: string[]
+  lastUpdated?: string
 }
 
 export interface Heading {
