@@ -197,6 +197,24 @@ created: 15-01-2025
 
 ## Deployment
 
-This site is deployed via GitHub Pages. Push to the `master` branch to trigger a deployment.
+Deploy to GitHub Pages using the deploy script:
+
+```bash
+npm run deploy
+```
+
+This script:
+1. Builds the project
+2. Pushes `dist/` contents to the `gh-pages` branch
+3. GitHub Pages serves from the `gh-pages` branch
+
+**GitHub Pages Configuration:**
+- Go to Settings → Pages
+- Source: Deploy from branch
+- Branch: `gh-pages` / `/ (root)`
+
+**Custom Domain:**
+- Domain: aocsa.dev
+- CNAME file is in `public/` (copied to `dist/` on build)
 
 For GitHub Pages to work with client-side routing, the `public/404.html` file handles redirects.

@@ -16,9 +16,12 @@ npm run preview      # Preview production build
 ```
 
 **Deployment:**
-- Push to `master` branch to deploy via GitHub Pages
+```bash
+npm run deploy         # Build and deploy to gh-pages branch
+```
 - Custom domain: aocsa.dev (configured in CNAME)
 - Build output in `dist/` folder
+- Deploys to `gh-pages` branch (GitHub Pages serves from this branch)
 
 ## Architecture
 
@@ -112,3 +115,23 @@ npm run sync-posts:strip  # Sync and remove metadata from .md files
 ## SPA Routing
 
 GitHub Pages uses `public/404.html` to handle client-side routing. This redirects unknown paths to the SPA which React Router then handles.
+
+## Deployment Script
+
+The `deploy` script automates pushing built files to the `gh-pages` branch:
+
+```bash
+npm run deploy
+```
+
+**What it does:**
+1. Builds the project (`npm run build`)
+2. Copies `dist/` contents to a temp directory
+3. Switches to `gh-pages` branch (creates as orphan if needed)
+4. Replaces all files with built contents
+5. Commits and pushes to `origin/gh-pages`
+6. Switches back to original branch
+
+**GitHub Pages Configuration:**
+- Settings → Pages → Source: Deploy from branch
+- Branch: `gh-pages` / `/ (root)`
