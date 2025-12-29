@@ -82,30 +82,96 @@ aocsa.github.io/
 
 ## Adding New Posts
 
-1. Create a markdown file in `public/posts/`:
+1. Create a markdown file in `public/posts/` with optional frontmatter:
+
+   ```markdown
+   ---
+   concepts: [rust, parsing]
+   description: A tutorial about parsing in Rust
+   created: 2025-01-15
+   source_repo: my-project
+   ---
+
+   # My New Post Title
+
+   Your content here...
+   ```
+
+2. Run the sync script to update `posts.json`:
 
    ```bash
-   touch public/posts/my-new-post.md
+   npm run sync-posts
    ```
 
-2. Add the post metadata to `public/posts/posts.json`:
-
-   ```json
-   {
-     "slug": "my-new-post",
-     "title": "My New Post Title",
-     "date": "2025-01-15",
-     "tags": ["topic1", "topic2"]
-   }
-   ```
-
-3. Write your content in the markdown file.
-
-4. Rebuild:
+3. Rebuild:
 
    ```bash
    npm run build
    ```
+
+## Blog Post Sync Script
+
+The `sync-posts` script automatically manages `posts.json` by scanning markdown files in `public/posts/`.
+
+### Commands
+
+```bash
+npm run sync-posts        # Smart sync (preserves existing entries)
+npm run sync-posts:dry    # Preview changes without applying
+npm run sync-posts:force  # Rebuild all entries from scratch
+npm run sync-posts:strip  # Sync and remove metadata from .md files
+```
+
+### How It Works
+
+**Input:** Markdown files in `public/posts/` with optional metadata (YAML frontmatter or `// key: value` comments)
+
+**Output:** Updated `posts.json` and optionally renamed files in `YYYY-MM-DD-slug.md` format
+
+**Behavior:**
+- Extracts metadata from frontmatter or infers from content
+- Preserves existing `posts.json` entries (only fills missing fields)
+- Renames files to consistent `YYYY-MM-DD-slug.md` format
+- Removes entries for deleted files
+- With `--strip-meta`: removes metadata from `.md` files after extraction
+
+### Supported Metadata
+
+| Source Field | JSON Field | Description |
+|--------------|------------|-------------|
+| `concepts` or `tags` | `tags` | Topic tags array |
+| `description` | `description` | Post summary |
+| `created` or `date` | `date` | Publication date (YYYY-MM-DD or DD-MM-YYYY) |
+| `source_repo` | `sourceRepo` | Related repository name |
+| `prerequisites` | `prerequisites` | Required reading (post slugs) |
+| `last_updated` | `lastUpdated` | Last modification date |
+
+### Example
+
+**Before** (`my-post.md`):
+```markdown
+---
+concepts: [rust, memory]
+description: Learn Rust ownership
+created: 15-01-2025
+---
+
+# Rust Ownership Guide
+...
+```
+
+**After** `npm run sync-posts`:
+- File renamed to `2025-01-15-my-post.md`
+- Entry added to `posts.json`:
+  ```json
+  {
+    "slug": "2025-01-15-my-post",
+    "title": "Rust Ownership Guide",
+    "date": "2025-01-15",
+    "tags": ["rust", "memory"],
+    "description": "Learn Rust ownership"
+  }
+  ```
 
 ## Post Metadata Schema
 

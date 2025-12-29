@@ -31,12 +31,15 @@ function PostView() {
             return res.text()
           })
           .then(content => {
+            // Remove the first H1 heading (title is shown in header)
+            const processedContent = content.replace(/^#\s+.+\n+/, '')
+
             // Extract headings for TOC (only h2 and h3)
             const headingRegex = /^(#{2,3})\s+(.+)$/gm
             const extractedHeadings: Heading[] = []
             let match
 
-            while ((match = headingRegex.exec(content)) !== null) {
+            while ((match = headingRegex.exec(processedContent)) !== null) {
               const level = match[1].length
               const text = match[2]
               const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
@@ -44,7 +47,7 @@ function PostView() {
             }
 
             setHeadings(extractedHeadings)
-            setPost({ ...meta, content })
+            setPost({ ...meta, content: processedContent })
             setLoading(false)
           })
       })

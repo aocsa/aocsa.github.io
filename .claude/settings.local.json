@@ -8,7 +8,8 @@
       "Bash(ls:*)",
       "Bash(npm install:*)",
       "Bash(npm run build:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(npm run sync-posts:dry:*)"
     ],
     "deny": [],
     "ask": []

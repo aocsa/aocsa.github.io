@@ -55,12 +55,59 @@ npm run preview      # Preview production build
 
 ## Adding Blog Posts
 
-1. Create markdown file: `public/posts/my-post.md`
-2. Add entry to `public/posts/posts.json`:
-   ```json
-   { "slug": "my-post", "title": "My Post", "date": "2025-01-15", "tags": ["topic"] }
+1. Create markdown file in `public/posts/` with optional metadata:
+   ```markdown
+   ---
+   concepts: [rust, parsing]
+   description: A tutorial about parsing in Rust
+   created: 2025-01-15
+   ---
+
+   # My Post Title
+
+   Content here...
    ```
+
+2. Run sync to update `posts.json`:
+   ```bash
+   npm run sync-posts
+   ```
+
 3. Rebuild: `npm run build`
+
+## Blog Post Sync Script
+
+The `sync-posts` script automatically manages `public/posts/posts.json` by scanning markdown files.
+
+**Commands:**
+```bash
+npm run sync-posts        # Smart sync (preserves existing entries)
+npm run sync-posts:dry    # Preview changes without applying
+npm run sync-posts:force  # Rebuild all entries from scratch
+npm run sync-posts:strip  # Sync and remove metadata from .md files
+```
+
+**What it does:**
+- Scans `public/posts/*.md` files for metadata
+- Extracts title, date, tags, description, prerequisites, sourceRepo
+- Renames files to `YYYY-MM-DD-slug.md` format
+- Updates `posts.json` with extracted/inferred metadata
+- Preserves existing entries (only updates missing fields)
+- Removes stale entries for deleted files
+
+**Supported metadata formats:**
+- YAML frontmatter: `---\nconcepts: [a, b]\n---`
+- Comment-style: `// concepts: [a, b]`
+
+**Metadata fields:**
+| Field | Maps to | Description |
+|-------|---------|-------------|
+| `concepts` / `tags` | `tags` | Array of topic tags |
+| `description` | `description` | Post summary |
+| `created` / `date` | `date` | Publication date |
+| `source_repo` | `sourceRepo` | Related repository |
+| `prerequisites` | `prerequisites` | Required reading (slugs) |
+| `last_updated` | `lastUpdated` | Last modification date |
 
 ## SPA Routing
 
