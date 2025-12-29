@@ -10,35 +10,31 @@ const projects: Project[] = [
     title: 'GPU Query Engine (Theseus)',
     description: 'Petabyte-scale GPU-accelerated query engine with advanced memory management and distributed execution. Designed physical execution abstractions with spill paths across GPU HBM → RAM → Disk.',
     tags: ['C++', 'CUDA', 'Apache Arrow'],
+    link: 'https://arxiv.org/html/2508.05029v1',
   },
   {
     title: 'PyTorch Sparse Tensors',
     description: 'Enhanced PyTorch sparse tensor capabilities with GPU-accelerated kernels. Contributed 40+ PRs in Aten/scatter-tensor kernels with numerical accuracy and performance fixes.',
     tags: ['C++', 'CUDA', 'PyTorch'],
-    link: 'https://github.com/pytorch/pytorch',
+    link: 'https://github.com/pytorch/pytorch/pulls?q=is%3Apr+author%3Aaocsa+is%3Aclosed',
   },
   {
     title: 'BlazingSQL',
     description: 'Distributed GPU SQL engine with UCX-based messaging and pull-based execution model. Built async executors for compute, comms, and memory/spill.',
     tags: ['C++', 'CUDA', 'SQL'],
-    link: 'https://github.com/BlazingDB/blazingsql',
+    link: 'https://github.com/BlazingDB/blazingsql/pulls?q=is%3Apr+author%3Aaocsa+is%3Aclosed',
   },
   {
     title: 'Apache Arrow',
     description: 'Contributing to the Apache Arrow ecosystem with 9+ PRs improving performance, new features, and ecosystem interoperability.',
     tags: ['C++', 'Python'],
-    link: 'https://github.com/apache/arrow',
+    link: 'hhttps://github.com/apache/arrow/pulls?q=is%3Apr+author%3Aaocsa+is%3Aclosed',
   },
   {
     title: 'RAPIDS/cuDF',
     description: 'Contributed 7+ PRs in CUDA primitives and analytics kernels including groupby and join operations.',
     tags: ['C++', 'CUDA', 'Python'],
-    link: 'https://github.com/rapidsai/cudf',
-  },
-  {
-    title: 'Mixed Reality Apps',
-    description: 'Holographic Mixed Reality applications for Microsoft HoloLens. Launched on iOS and Android platforms.',
-    tags: ['C#', 'Unity', 'HoloLens'],
+    link: 'https://github.com/rapidsai/cudf/pulls?q=is%3Apr+author%3Aaocsa+is%3Aclosed',
   },
 ]
 
