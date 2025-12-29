@@ -72,6 +72,14 @@ function PostView() {
     ? `${window.location.origin}/posts/${slug}`
     : ''
 
+  // Get prerequisite posts with their titles
+  const prerequisitePosts = useMemo(() => {
+    if (!post?.prerequisites || allPosts.length === 0) return []
+    return post.prerequisites
+      .map(prereqSlug => allPosts.find(p => p.slug === prereqSlug))
+      .filter((p): p is Post => p !== undefined)
+  }, [post, allPosts])
+
   if (loading) return <div className="loading">Loading post...</div>
   if (error) return <div className="error">Error: {error}</div>
   if (!post) return <div className="error">Post not found</div>
@@ -114,6 +122,25 @@ function PostView() {
             </a>
           </div>
         </header>
+        {prerequisitePosts.length > 0 && (
+          <div className="post-prerequisites">
+            <div className="prerequisites-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span>Before reading this post, you might want to check out:</span>
+            </div>
+            <ul className="prerequisites-list">
+              {prerequisitePosts.map(prereq => (
+                <li key={prereq.slug}>
+                  <Link to={`/posts/${prereq.slug}`}>{prereq.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div className="prose">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}

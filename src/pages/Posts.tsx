@@ -50,7 +50,12 @@ function Posts() {
             {postsByYear[year].map(post => (
               <li key={post.slug} className="posts-item">
                 <Link to={`/posts/${post.slug}`} className="posts-link">
-                  <span className="posts-item-title">{post.title}</span>
+                  <div className="posts-item-content">
+                    <span className="posts-item-title">{post.title}</span>
+                    {post.description && (
+                      <p className="posts-item-description">{post.description}</p>
+                    )}
+                  </div>
                   <span className="posts-item-date">
                     {new Date(post.date).toLocaleDateString('en-US', {
                       month: 'short',
