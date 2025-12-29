@@ -1,0 +1,52 @@
+[
+  {
+    "slug": "2025-12-23-building-a-recursive-descent-parser-in-rust",
+    "title": "Building a Recursive Descent Parser in Rust",
+    "date": "2025-12-23",
+    "tags": [
+      "parsing",
+      "lexer",
+      "Result",
+      "iterators",
+      "string-slices"
+    ],
+    "description": "Implements a complete lexer and recursive descent parser for arithmetic expressions in Rust. Covers string slices, iterators, the Peekable adapter, Result/Option for error handling, and ownership patterns in parser state.",
+    "sourceRepo": "expression-evaluator",
+    "prerequisites": [
+      "2025-12-23-rust-ownership-for-c++-engineers",
+      "2025-12-23-modeling-expressions-with-enums-and-pattern-matching"
+    ],
+    "lastUpdated": "2025-12-23"
+  },
+  {
+    "slug": "2025-12-23-modeling-expressions-with-enums-and-pattern-matching",
+    "title": "Modeling Expressions with Enums and Pattern Matching",
+    "date": "2025-12-23",
+    "tags": [
+      "enums",
+      "pattern-matching",
+      "algebraic-data-types",
+      "Box"
+    ],
+    "description": "Uses Rust's algebraic data types (enums with data) to design Token and Expr types for an expression evaluator. Shows how pattern matching replaces C++ virtual dispatch and visitor patterns with exhaustive, compiler-checked code.",
+    "sourceRepo": "expression-evaluator",
+    "prerequisites": [
+      "2025-12-23-rust-ownership-for-c++-engineers"
+    ],
+    "lastUpdated": "2025-12-23"
+  },
+  {
+    "slug": "2025-12-23-rust-ownership-for-c++-engineers",
+    "title": "Rust Ownership for C++ Engineers",
+    "date": "2025-12-23",
+    "tags": [
+      "ownership",
+      "borrowing",
+      "lifetimes",
+      "move-semantics"
+    ],
+    "description": "Translates C++ memory management concepts (RAII, unique_ptr, move semantics) into Rust's ownership model. Covers the key mental shifts a C++ developer needs to stop fighting the borrow checker and start thinking in Rust.",
+    "sourceRepo": "expression-evaluator",
+    "lastUpdated": "2025-12-23"
+  }
+]

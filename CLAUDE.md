@@ -4,36 +4,47 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal portfolio website for Alexander Ocsa (aocsa.dev), a System Software Engineer specializing in GPU computing and query engines. This is a static site hosted on GitHub Pages.
+Personal portfolio website for Alexander Ocsa (aocsa.dev), a System Software Engineer specializing in GPU computing and query engines. React SPA with blog, hosted on GitHub Pages.
 
 ## Development
 
-**Local Development:**
 ```bash
-# Serve locally (use any static server)
-python -m http.server 8000
-# or
-npx serve .
+npm install          # Install dependencies
+npm run dev          # Start dev server (http://localhost:5173/)
+npm run build        # Build for production (outputs to dist/)
+npm run preview      # Preview production build
 ```
 
 **Deployment:**
 - Push to `master` branch to deploy via GitHub Pages
 - Custom domain: aocsa.dev (configured in CNAME)
+- Build output in `dist/` folder
 
 ## Architecture
 
-**Static single-page site with no build step:**
-- `index.html` - Complete page structure with all sections (Hero, About, Skills, Expertise, Experience, Education, Projects, Contact)
-- `styles.css` - All styling with CSS custom properties for theming
-- `service-worker.js` - PWA offline caching support
-- `manifest.json` - PWA manifest
+**React SPA with Vite build:**
+- `src/main.tsx` - App entry point
+- `src/App.tsx` - React Router setup
+- `src/components/Layout.tsx` - Shared header & footer
+- `src/components/home/` - Home page section components
+- `src/pages/` - Page components (Home, Posts, PostView, Projects, Contact)
+- `src/styles/main.css` - All styling
+- `public/posts/` - Markdown blog posts + posts.json manifest
+
+**Routes:**
+- `/` - Home (Hero, About, Skills, Expertise, Work, Education, Contact)
+- `/posts` - Blog posts list
+- `/posts/:slug` - Individual blog post
+- `/projects` - Projects page
+- `/contact` - Contact form (also embedded in Home page)
 
 **Key Design Patterns:**
-- CSS custom properties defined in `:root` for colors, typography, and spacing
+- CSS custom properties in `:root` for colors, typography, spacing
 - Fonts: Inter (sans-serif) + JetBrains Mono (monospace)
 - Mobile-responsive with slide-out mobile menu
-- Scroll-reveal animations via IntersectionObserver
 - Contact form uses Formspree (no backend required)
+- Markdown rendering with react-markdown, remark-gfm, rehype-highlight
+- Shared components (e.g., Contact) can be used as both sections and standalone pages
 
 **CSS Variable System:**
 ```css
@@ -42,11 +53,62 @@ npx serve .
 --container-width, --section-padding
 ```
 
-## Cache Busting
+## Adding Blog Posts
 
-When modifying `styles.css`, update the version query parameter in `index.html`:
-```html
-<link rel="stylesheet" href="/styles.css?v=7">
+1. Create markdown file in `public/posts/` with optional metadata:
+   ```markdown
+   ---
+   concepts: [rust, parsing]
+   description: A tutorial about parsing in Rust
+   created: 2025-01-15
+   ---
+
+   # My Post Title
+
+   Content here...
+   ```
+
+2. Run sync to update `posts.json`:
+   ```bash
+   npm run sync-posts
+   ```
+
+3. Rebuild: `npm run build`
+
+## Blog Post Sync Script
+
+The `sync-posts` script automatically manages `public/posts/posts.json` by scanning markdown files.
+
+**Commands:**
+```bash
+npm run sync-posts        # Smart sync (preserves existing entries)
+npm run sync-posts:dry    # Preview changes without applying
+npm run sync-posts:force  # Rebuild all entries from scratch
+npm run sync-posts:strip  # Sync and remove metadata from .md files
 ```
 
-Also update `CACHE_NAME` in `service-worker.js` for PWA cache invalidation.
+**What it does:**
+- Scans `public/posts/*.md` files for metadata
+- Extracts title, date, tags, description, prerequisites, sourceRepo
+- Renames files to `YYYY-MM-DD-slug.md` format
+- Updates `posts.json` with extracted/inferred metadata
+- Preserves existing entries (only updates missing fields)
+- Removes stale entries for deleted files
+
+**Supported metadata formats:**
+- YAML frontmatter: `---\nconcepts: [a, b]\n---`
+- Comment-style: `// concepts: [a, b]`
+
+**Metadata fields:**
+| Field | Maps to | Description |
+|-------|---------|-------------|
+| `concepts` / `tags` | `tags` | Array of topic tags |
+| `description` | `description` | Post summary |
+| `created` / `date` | `date` | Publication date |
+| `source_repo` | `sourceRepo` | Related repository |
+| `prerequisites` | `prerequisites` | Required reading (slugs) |
+| `last_updated` | `lastUpdated` | Last modification date |
+
+## SPA Routing
+
+GitHub Pages uses `public/404.html` to handle client-side routing. This redirects unknown paths to the SPA which React Router then handles.
