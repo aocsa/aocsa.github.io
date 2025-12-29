@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#111"/>
+  <!-- Modern geometric A -->
+  <path fill="#fff" d="M256 80L128 432h56l24-72h96l24 72h56L256 80zm0 96l32 112h-64l32-112z"/>
+</svg>
