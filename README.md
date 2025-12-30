@@ -68,9 +68,10 @@ aocsa.github.io/
 │   └── styles/
 │       └── main.css          # All styles
 ├── public/
-│   ├── posts/
-│   │   ├── posts.json        # Post manifest
-│   │   └── *.md              # Markdown posts
+│   ├── content/
+│   │   └── posts/
+│   │       ├── posts.json    # Post manifest
+│   │       └── *.md          # Markdown posts
 │   ├── favicon.svg
 │   ├── manifest.json
 │   └── 404.html              # SPA routing fallback
@@ -80,9 +81,17 @@ aocsa.github.io/
 └── tsconfig.json
 ```
 
+## Content vs Routes
+
+Content files are stored in `/public/content/` to avoid conflicts with SPA routes:
+- **Routes**: `/posts/slug` → React Router renders the PostView component
+- **Content**: `/content/posts/slug.md` → Static markdown files served by the web server
+
+This separation prevents URL ambiguity and ensures clean SPA routing.
+
 ## Adding New Posts
 
-1. Create a markdown file in `public/posts/` with optional frontmatter:
+1. Create a markdown file in `public/content/posts/` with optional frontmatter:
 
    ```markdown
    ---

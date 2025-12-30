@@ -31,7 +31,8 @@ export function PostProvider({ children }: { children: ReactNode }) {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    fetch('/posts/posts.json')
+    // Fetch from /content/posts/ to avoid SPA route conflicts
+    fetch('/content/posts/posts.json')
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch posts manifest')
         return res.json()

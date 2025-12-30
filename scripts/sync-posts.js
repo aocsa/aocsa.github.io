@@ -3,8 +3,11 @@
 /**
  * Blog Post Sync Script
  *
- * Scans public/posts/ for markdown files, extracts metadata,
+ * Scans public/content/posts/ for markdown files, extracts metadata,
  * renames files to YYYY-MM-DD-slug.md format, and updates posts.json.
+ *
+ * Note: Content files are stored in /public/content/posts/ to avoid
+ * conflicts with SPA routes (e.g., /posts/slug is handled by React Router).
  *
  * Key behavior:
  *   - Preserves existing posts.json entries
@@ -31,7 +34,10 @@ import { fileURLToPath } from 'url';
 
 // Configuration
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const POSTS_DIR = path.join(__dirname, '../public/posts');
+// Content files are in /public/content/posts/ to avoid SPA route conflicts
+// Routes like /posts/slug are handled by React Router
+// Content files are served from /content/posts/slug.md
+const POSTS_DIR = path.join(__dirname, '../public/content/posts');
 const POSTS_JSON = path.join(POSTS_DIR, 'posts.json');
 
 // CLI flags

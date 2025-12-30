@@ -46,11 +46,16 @@ function PostView() {
   useEffect(() => {
     if (!slug || postsLoading) return
 
+    // Also wait for posts array to be populated
     const meta = getPostBySlug(slug)
     if (!meta) {
-      console.error(`Post not found for slug: ${slug}`)
-      setContentError('Post not found')
-      setContentLoading(false)
+      // Don't show error immediately - posts might still be loading
+      // Only show error if we have posts but this slug isn't found
+      if (posts.length > 0) {
+        console.error(`Post not found for slug: ${slug}`)
+        setContentError('Post not found')
+        setContentLoading(false)
+      }
       return
     }
 
@@ -62,8 +67,10 @@ function PostView() {
     // Scroll to top on navigation
     window.scrollTo(0, 0)
 
-    // Fetch the markdown content using an absolute path to avoid relative path issues
-    const contentUrl = `/posts/${meta.slug}.md`
+    // Fetch the markdown content from /content/posts/ to avoid SPA route conflicts
+    // Routes like /posts/slug are handled by React Router
+    // Content files are served from /content/posts/slug.md
+    const contentUrl = `/content/posts/${meta.slug}.md`
 
     fetch(contentUrl)
       .then(res => {
@@ -87,7 +94,7 @@ function PostView() {
         setContentError(err.message)
         setContentLoading(false)
       })
-  }, [slug, postsLoading, getPostBySlug])
+  }, [slug, postsLoading, posts, getPostBySlug])
 
   // Calculate next/prev posts based on topological order
   const { prevPost, nextPost } = useMemo(() => {

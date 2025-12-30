@@ -32,7 +32,7 @@ npm run deploy         # Build and deploy to gh-pages branch
 - `src/components/home/` - Home page section components
 - `src/pages/` - Page components (Home, Posts, PostView, Projects, Contact)
 - `src/styles/main.css` - All styling
-- `public/posts/` - Markdown blog posts + posts.json manifest
+- `public/content/posts/` - Markdown blog posts + posts.json manifest
 
 **Routes:**
 - `/` - Home (Hero, About, Skills, Expertise, Work, Education, Contact)
@@ -56,9 +56,17 @@ npm run deploy         # Build and deploy to gh-pages branch
 --container-width, --section-padding
 ```
 
+## Content vs Routes
+
+To avoid SPA routing conflicts, content files are stored separately from routes:
+- **Routes**: `/posts/slug` → React Router renders PostView component
+- **Content**: `/content/posts/slug.md` → Static markdown files
+
+This prevents ambiguity where a URL like `/posts/my-post` could match either a React route OR a static `.md` file.
+
 ## Adding Blog Posts
 
-1. Create markdown file in `public/posts/` with optional metadata:
+1. Create markdown file in `public/content/posts/` with optional metadata:
    ```markdown
    ---
    concepts: [rust, parsing]
@@ -80,7 +88,7 @@ npm run deploy         # Build and deploy to gh-pages branch
 
 ## Blog Post Sync Script
 
-The `sync-posts` script automatically manages `public/posts/posts.json` by scanning markdown files.
+The `sync-posts` script automatically manages `public/content/posts/posts.json` by scanning markdown files.
 
 **Commands:**
 ```bash
@@ -91,7 +99,7 @@ npm run sync-posts:strip  # Sync and remove metadata from .md files
 ```
 
 **What it does:**
-- Scans `public/posts/*.md` files for metadata
+- Scans `public/content/posts/*.md` files for metadata
 - Extracts title, date, tags, description, prerequisites, sourceRepo
 - Renames files to `YYYY-MM-DD-slug.md` format
 - Updates `posts.json` with extracted/inferred metadata

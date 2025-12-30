@@ -11,11 +11,6 @@ export default defineConfig({
   },
   base: '/',
   publicDir: 'public',
-  server: {
-    // Handle SPA routing - serve index.html for non-file routes
-    middlewareMode: false,
-  },
-  appType: 'spa',
   build: {
     outDir: 'dist',
     rollupOptions: {

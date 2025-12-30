@@ -12,7 +12,8 @@
       "Bash(npm run sync-posts:dry:*)",
       "Bash(cat:*)",
       "Bash(chmod:*)",
-      "Bash(npm install)"
+      "Bash(npm install)",
+      "Bash(pkill:*)"
     ],
     "deny": [],
     "ask": []
