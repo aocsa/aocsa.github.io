@@ -6,18 +6,22 @@ import PostView from './pages/PostView'
 import Projects from './pages/Projects'
 import Contact from './pages/Contact'
 
+import { PostProvider } from './contexts/PostContext'
+
 function App() {
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/posts" element={<Posts />} />
-          <Route path="/posts/:slug" element={<PostView />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </Layout>
+      <PostProvider>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/posts" element={<Posts />} />
+            <Route path="/posts/:slug" element={<PostView />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </Layout>
+      </PostProvider>
     </BrowserRouter>
   )
 }

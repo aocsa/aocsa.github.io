@@ -1,35 +1,15 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { Post } from '../types/post'
+import { usePosts } from '../contexts/PostContext'
 
 // Maximum number of tags to display (most relevant first)
 const MAX_VISIBLE_TAGS = 8
 
 function Posts() {
-  const [posts, setPosts] = useState<Post[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const { posts, loading, error } = usePosts()
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set())
-
-  useEffect(() => {
-    fetch('/posts/posts.json')
-      .then(res => {
-        if (!res.ok) throw new Error('Failed to fetch posts')
-        return res.json()
-      })
-      .then((data: Post[]) => {
-        // Filter out drafts and sort by date descending
-        const published = data.filter(post => !post.draft)
-        published.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-        setPosts(published)
-        setLoading(false)
-      })
-      .catch(err => {
-        setError(err.message)
-        setLoading(false)
-      })
-  }, [])
 
   // Extract all unique tags with their counts, sorted by frequency
   const sortedTags = useMemo(() => {

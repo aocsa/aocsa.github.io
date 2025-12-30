@@ -6,6 +6,8 @@ import rehypeHighlight from 'rehype-highlight'
 import rehypeSlug from 'rehype-slug'
 import { Post } from '../types/post'
 
+import { usePosts } from '../contexts/PostContext'
+
 function calculateReadingTime(content: string): number {
   const wordsPerMinute = 200
   const words = content.trim().split(/\s+/).length
@@ -34,58 +36,51 @@ function formatRepoName(url: string): string {
 
 function PostView() {
   const { slug } = useParams<{ slug: string }>()
+  const { posts, loading: postsLoading, error: postsError, getPostBySlug, getAdjacentPosts } = usePosts()
   const [post, setPost] = useState<Post | null>(null)
-  const [allPosts, setAllPosts] = useState<Post[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [contentLoading, setContentLoading] = useState(true)
+  const [contentError, setContentError] = useState<string | null>(null)
   const [readingTime, setReadingTime] = useState(0)
 
   useEffect(() => {
-    if (!slug) return
+    if (!slug || postsLoading) return
 
-    // First fetch the posts manifest to get metadata
-    fetch('/posts/posts.json')
-      .then(res => res.json())
-      .then((posts: Post[]) => {
-        // Store all posts for next/prev navigation (filter out drafts, sort by date)
-        const publishedPosts = posts
-          .filter(p => !p.draft)
-          .sort((a, b) => b.date.localeCompare(a.date))
-        setAllPosts(publishedPosts)
+    const meta = getPostBySlug(slug)
+    if (!meta) {
+      setContentError('Post not found')
+      setContentLoading(false)
+      return
+    }
 
-        const meta = posts.find(p => p.slug === slug)
-        if (!meta) throw new Error('Post not found')
+    // Reset state for new post
+    setPost(null)
+    setContentLoading(true)
+    setContentError(null)
 
-        // Then fetch the markdown content
-        return fetch(`/posts/${meta.slug}.md`)
-          .then(res => {
-            if (!res.ok) throw new Error('Post content not found')
-            return res.text()
-          })
-          .then(content => {
-            // Remove the first H1 heading (title is shown in header)
-            const processedContent = content.replace(/^#\s+.+\n+/, '')
+    // Fetch only the markdown content
+    fetch(`/posts/${meta.slug}.md`)
+      .then(res => {
+        if (!res.ok) throw new Error('Post content not found')
+        return res.text()
+      })
+      .then(content => {
+        // Remove the first H1 heading (title is shown in header)
+        const processedContent = content.replace(/^#\s+.+\n+/, '')
 
-            setReadingTime(calculateReadingTime(processedContent))
-            setPost({ ...meta, content: processedContent })
-            setLoading(false)
-          })
+        setReadingTime(calculateReadingTime(processedContent))
+        setPost({ ...meta, content: processedContent })
+        setContentLoading(false)
       })
       .catch(err => {
-        setError(err.message)
-        setLoading(false)
+        setContentError(err.message)
+        setContentLoading(false)
       })
-  }, [slug])
+  }, [slug, postsLoading, getPostBySlug])
 
-  // Calculate next/prev posts based on date order
+  // Calculate next/prev posts based on topological order
   const { prevPost, nextPost } = useMemo(() => {
-    if (!post || allPosts.length === 0) return { prevPost: null, nextPost: null }
-    const currentIndex = allPosts.findIndex(p => p.slug === post.slug)
-    return {
-      prevPost: currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null,
-      nextPost: currentIndex > 0 ? allPosts[currentIndex - 1] : null
-    }
-  }, [post, allPosts])
+    return slug ? getAdjacentPosts(slug) : { prevPost: null, nextPost: null }
+  }, [slug, getAdjacentPosts])
 
   // Generate share URL
   const shareUrl = typeof window !== 'undefined'
@@ -94,13 +89,16 @@ function PostView() {
 
   // Get prerequisite posts with their titles
   const prerequisitePosts = useMemo(() => {
-    if (!post?.prerequisites || allPosts.length === 0) return []
+    if (!post?.prerequisites || posts.length === 0) return []
     return post.prerequisites
-      .map(prereqSlug => allPosts.find(p => p.slug === prereqSlug))
+      .map(prereqSlug => posts.find(p => p.slug === prereqSlug))
       .filter((p): p is Post => p !== undefined)
-  }, [post, allPosts])
+  }, [post, posts])
 
-  if (loading) return <div className="loading">Loading post...</div>
+  const isLoading = postsLoading || contentLoading
+  const error = postsError || contentError
+
+  if (isLoading) return <div className="loading">Loading post...</div>
   if (error) return <div className="error">Error: {error}</div>
   if (!post) return <div className="error">Post not found</div>
 

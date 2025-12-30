@@ -109,7 +109,7 @@ function parseValue(str) {
       .filter(s => s.length > 0);
   }
   if ((str.startsWith('"') && str.endsWith('"')) ||
-      (str.startsWith("'") && str.endsWith("'"))) {
+    (str.startsWith("'") && str.endsWith("'"))) {
     return str.slice(1, -1);
   }
   if (str === 'null' || str === '') return null;
@@ -391,6 +391,70 @@ function stripMetadata(content) {
 }
 
 // =============================================================================
+// Topological Sorting by Prerequisites
+// =============================================================================
+
+/**
+ * Calculate the dependency depth of each post.
+ * Posts with no prerequisites have depth 0.
+ * Posts that depend on depth-N posts have depth N+1.
+ * This creates a natural learning order (foundations first, advanced last).
+ */
+function calculateDepth(post, postsBySlug, memo = new Map()) {
+  if (memo.has(post.slug)) return memo.get(post.slug);
+
+  if (!post.prerequisites || post.prerequisites.length === 0) {
+    memo.set(post.slug, 0);
+    return 0;
+  }
+
+  let maxPrereqDepth = -1;
+  for (const prereqSlug of post.prerequisites) {
+    const prereq = postsBySlug.get(prereqSlug);
+    if (prereq) {
+      const prereqDepth = calculateDepth(prereq, postsBySlug, memo);
+      maxPrereqDepth = Math.max(maxPrereqDepth, prereqDepth);
+    }
+  }
+
+  const depth = maxPrereqDepth + 1;
+  memo.set(post.slug, depth);
+  return depth;
+}
+
+/**
+ * Sort posts by:
+ * 1. sourceRepo (alphabetically)
+ * 2. Dependency depth (ascending - foundations first, advanced last)
+ * 3. Date (descending - newer first within same depth)
+ */
+function sortPostsTopologically(posts) {
+  // Build lookup map
+  const postsBySlug = new Map();
+  posts.forEach(p => postsBySlug.set(p.slug, p));
+
+  // Calculate depths
+  const depthMemo = new Map();
+  posts.forEach(p => calculateDepth(p, postsBySlug, depthMemo));
+
+  // Sort
+  return [...posts].sort((a, b) => {
+    // 1. Sort by sourceRepo (alphabetically)
+    const repoA = a.sourceRepo || '';
+    const repoB = b.sourceRepo || '';
+    if (repoA !== repoB) return repoA.localeCompare(repoB);
+
+    // 2. Sort by depth (ascending - foundations first)
+    const depthA = depthMemo.get(a.slug) || 0;
+    const depthB = depthMemo.get(b.slug) || 0;
+    if (depthA !== depthB) return depthA - depthB;
+
+    // 3. Sort by date (descending - newer first within same depth)
+    return b.date.localeCompare(a.date);
+  });
+}
+
+// =============================================================================
 // Main
 // =============================================================================
 
@@ -453,9 +517,7 @@ function main() {
 
   if (DRY_RUN) {
     console.log('📋 posts.json would contain:\n');
-    const jsonData = posts
-      .map(p => p.postData)
-      .sort((a, b) => b.date.localeCompare(a.date));
+    const jsonData = sortPostsTopologically(posts.map(p => p.postData));
     console.log(JSON.stringify(jsonData, null, 2));
     return;
   }
@@ -486,10 +548,8 @@ function main() {
     }
   }
 
-  // Write posts.json
-  const jsonData = posts
-    .map(p => p.postData)
-    .sort((a, b) => b.date.localeCompare(a.date));
+  // Write posts.json (sorted by sourceRepo, then by prerequisite depth, then by date)
+  const jsonData = sortPostsTopologically(posts.map(p => p.postData));
 
   fs.writeFileSync(POSTS_JSON, JSON.stringify(jsonData, null, 2) + '\n');
 
