@@ -1,21 +1,65 @@
 [
   {
-    "slug": "2025-12-23-building-a-recursive-descent-parser-in-rust",
-    "title": "Building a Recursive Descent Parser in Rust",
+    "slug": "2025-12-23-traits---rust's-interface-system-for-query-engine-components",
+    "title": "Traits: Rust's Interface System for Query Engine Components",
     "date": "2025-12-23",
     "tags": [
-      "parsing",
-      "lexer",
-      "Result",
-      "iterators",
-      "string-slices"
+      "traits",
+      "trait-objects",
+      "static-dispatch",
+      "dynamic-dispatch",
+      "orphan-rule"
     ],
-    "description": "Implements a complete lexer and recursive descent parser for arithmetic expressions in Rust. Covers string slices, iterators, the Peekable adapter, Result/Option for error handling, and ownership patterns in parser state.",
-    "sourceRepo": "expression-evaluator",
+    "description": "Translates C++ abstract classes and virtual functions into Rust traits. Covers trait objects, static vs dynamic dispatch, downcasting with as_any() (like C++ dynamic_cast), TypedColumnRef for type-safe dispatch (like std::variant), and macros for visiting column types (like std::visit).",
+    "sourceRepo": "https://github.com/aocsa/rust-csv-data-source-reader",
+    "lastUpdated": "2025-12-26"
+  },
+  {
+    "slug": "2025-12-26-generics-and-trait-bounds---building-typedcolumn",
+    "title": "Generics and Trait Bounds   Building Typedcolumn",
+    "date": "2025-12-26",
+    "tags": [
+      "generics",
+      "trait-bounds",
+      "associated-types",
+      "where-clause"
+    ],
+    "description": "Deep dive into Rust generics for query engine design. Covers trait bounds, associated types vs generic parameters, type-safe dispatch with enums and macros, conditional implementations, and when to prefer concrete types over generics.",
+    "sourceRepo": "https://github.com/aocsa/rust-csv-data-source-reader",
     "prerequisites": [
-      "2025-12-23-rust-ownership-for-c++-engineers",
-      "2025-12-23-modeling-expressions-with-enums-and-pattern-matching"
+      "2025-12-23-traits---rust's-interface-system-for-query-engine-components"
     ],
+    "lastUpdated": "2025-12-26"
+  },
+  {
+    "slug": "2025-12-24-async-rust---from-iterators-to-streams",
+    "title": "Async Rust From Iterators to Streams",
+    "date": "2025-12-30",
+    "tags": [
+      "rust",
+      "c++",
+      "parsing"
+    ],
+    "description": "Transforms the synchronous CsvDataSource into an async implementation. Covers why async matters for I/O-bound query engines, the Future trait, async/await syntax, the Stream trait as async Iterator, and patterns for concurrent data processing.",
+    "sourceRepo": "https://github.com/aocsa/rust-csv-data-source-reader",
+    "prerequisites": [
+      "2025-12-23-traits---rust's-interface-system-for-query-engine-components",
+      "2025-12-26-generics-and-trait-bounds---building-typedcolumn"
+    ],
+    "lastUpdated": "2025-12-30"
+  },
+  {
+    "slug": "2025-12-23-rust-ownership-for-c++-engineers",
+    "title": "Rust Ownership for C++ Engineers",
+    "date": "2025-12-23",
+    "tags": [
+      "ownership",
+      "borrowing",
+      "lifetimes",
+      "move-semantics"
+    ],
+    "description": "Translates C++ memory management concepts (RAII, unique_ptr, move semantics) into Rust's ownership model. Covers the key mental shifts a C++ developer needs to stop fighting the borrow checker and start thinking in Rust.",
+    "sourceRepo": "https://github.com/aocsa/rust-expr-evaluator",
     "lastUpdated": "2025-12-23"
   },
   {
@@ -29,24 +73,29 @@
       "Box"
     ],
     "description": "Uses Rust's algebraic data types (enums with data) to design Token and Expr types for an expression evaluator. Shows how pattern matching replaces C++ virtual dispatch and visitor patterns with exhaustive, compiler-checked code.",
-    "sourceRepo": "expression-evaluator",
+    "sourceRepo": "https://github.com/aocsa/rust-expr-evaluator",
     "prerequisites": [
       "2025-12-23-rust-ownership-for-c++-engineers"
     ],
     "lastUpdated": "2025-12-23"
   },
   {
-    "slug": "2025-12-23-rust-ownership-for-c++-engineers",
-    "title": "Rust Ownership for C++ Engineers",
+    "slug": "2025-12-23-building-a-recursive-descent-parser-in-rust",
+    "title": "Building a Recursive Descent Parser in Rust",
     "date": "2025-12-23",
     "tags": [
-      "ownership",
-      "borrowing",
-      "lifetimes",
-      "move-semantics"
+      "parsing",
+      "lexer",
+      "Result",
+      "iterators",
+      "string-slices"
     ],
-    "description": "Translates C++ memory management concepts (RAII, unique_ptr, move semantics) into Rust's ownership model. Covers the key mental shifts a C++ developer needs to stop fighting the borrow checker and start thinking in Rust.",
-    "sourceRepo": "expression-evaluator",
+    "description": "Implements a complete lexer and recursive descent parser for arithmetic expressions in Rust. Covers string slices, iterators, the Peekable adapter, Result/Option for error handling, and ownership patterns in parser state.",
+    "sourceRepo": "https://github.com/aocsa/rust-expr-evaluator",
+    "prerequisites": [
+      "2025-12-23-rust-ownership-for-c++-engineers",
+      "2025-12-23-modeling-expressions-with-enums-and-pattern-matching"
+    ],
     "lastUpdated": "2025-12-23"
   }
 ]
