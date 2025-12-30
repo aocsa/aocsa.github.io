@@ -56,6 +56,8 @@ export function sortPostsTopologically(posts: Post[]): Post[] {
     if (depthA !== depthB) return depthA - depthB
 
     // 3. Sort by date (descending - newer first within same depth)
-    return new Date(b.date).getTime() - new Date(a.date).getTime()
+    const dateA = new Date(a.date.replace(/-/g, '/')).getTime()
+    const dateB = new Date(b.date.replace(/-/g, '/')).getTime()
+    return dateB - dateA
   })
 }

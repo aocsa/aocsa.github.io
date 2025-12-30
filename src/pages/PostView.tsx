@@ -7,6 +7,7 @@ import rehypeSlug from 'rehype-slug'
 import { Post } from '../types/post'
 
 import { usePosts } from '../contexts/PostContext'
+import { formatFullDate } from '../utils/date-utils'
 
 function calculateReadingTime(content: string): number {
   const wordsPerMinute = 200
@@ -158,11 +159,7 @@ function PostView() {
                   <line x1="8" y1="2" x2="8" y2="6"></line>
                   <line x1="3" y1="10" x2="21" y2="10"></line>
                 </svg>
-                {new Date(post.date).toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'short',
-                  day: 'numeric'
-                })}
+                {formatFullDate(post.date)}
               </span>
               <span className="post-meta-separator">•</span>
               <span className="post-reading-time">{readingTime} min read</span>

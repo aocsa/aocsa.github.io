@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { Post } from '../types/post'
 import { usePosts } from '../contexts/PostContext'
+import { formatDisplayDate } from '../utils/date-utils'
 
 // Maximum number of tags to display (most relevant first)
 const MAX_VISIBLE_TAGS = 8
@@ -69,7 +70,8 @@ function Posts() {
 
   // Group filtered posts by year
   const postsByYear = filteredPosts.reduce((acc, post) => {
-    const year = new Date(post.date).getFullYear()
+    // Use '/' for year extraction to avoid timezone issues with YYYY-MM-DD
+    const year = new Date(post.date.replace(/-/g, '/')).getFullYear()
     if (!acc[year]) acc[year] = []
     acc[year].push(post)
     return acc
@@ -175,10 +177,7 @@ function Posts() {
                       )}
                     </div>
                     <span className="posts-item-date">
-                      {new Date(post.date).toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric'
-                      })}
+                      {formatDisplayDate(post.date)}
                     </span>
                   </Link>
                 </li>
