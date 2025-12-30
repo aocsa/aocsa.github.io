@@ -11,7 +11,7 @@
       "orphan-rule"
     ],
     "description": "Translates C++ abstract classes and virtual functions into Rust traits. Covers trait objects, static vs dynamic dispatch, downcasting with as_any() (like C++ dynamic_cast), TypedColumnRef for type-safe dispatch (like std::variant), and macros for visiting column types (like std::visit).",
-    "sourceRepo": "csv-datasource",
+    "sourceRepo": "https://github.com/aocsa/rust-csv-data-source-reader",
     "lastUpdated": "2025-12-26"
   },
   {
@@ -25,7 +25,7 @@
       "where-clause"
     ],
     "description": "Deep dive into Rust generics for query engine design. Covers trait bounds, associated types vs generic parameters, type-safe dispatch with enums and macros, conditional implementations, and when to prefer concrete types over generics.",
-    "sourceRepo": "csv-datasource",
+    "sourceRepo": "https://github.com/aocsa/rust-csv-data-source-reader",
     "prerequisites": [
       "2025-12-23-traits---rust's-interface-system-for-query-engine-components"
     ],
@@ -34,19 +34,19 @@
   {
     "slug": "2025-12-24-async-rust---from-iterators-to-streams",
     "title": "Async Rust From Iterators to Streams",
-    "date": "2025-12-24",
+    "date": "2025-12-30",
     "tags": [
       "rust",
       "c++",
       "parsing"
     ],
     "description": "Transforms the synchronous CsvDataSource into an async implementation. Covers why async matters for I/O-bound query engines, the Future trait, async/await syntax, the Stream trait as async Iterator, and patterns for concurrent data processing.",
-    "sourceRepo": "csv-datasource",
+    "sourceRepo": "https://github.com/aocsa/rust-csv-data-source-reader",
     "prerequisites": [
       "2025-12-23-traits---rust's-interface-system-for-query-engine-components",
       "2025-12-26-generics-and-trait-bounds---building-typedcolumn"
     ],
-    "lastUpdated": "2025-12-26"
+    "lastUpdated": "2025-12-30"
   },
   {
     "slug": "2025-12-23-rust-ownership-for-c++-engineers",

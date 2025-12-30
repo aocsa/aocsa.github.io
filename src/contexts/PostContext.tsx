@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react'
 import { Post } from '../types/post'
 import { sortPostsTopologically } from '../utils/postSorting'
 
@@ -53,24 +53,27 @@ export function PostProvider({ children }: { children: ReactNode }) {
   }, [])
 
   /** Finds a post by its unique URL slug */
-  const getPostBySlug = (slug: string) => {
-    return posts.find(p => p.slug === slug)
-  }
+  const getPostBySlug = useCallback((slug: string) => {
+    // Decode slug to handle special characters (like apostrophes) in URLs
+    const decodedSlug = decodeURIComponent(slug)
+    return posts.find(p => p.slug === decodedSlug)
+  }, [posts])
 
   /** 
    * Finds navigation peers for a post. 
    * 'Previous' is the post that logically should be read before this one.
    * 'Next' is the post that logically follows.
    */
-  const getAdjacentPosts = (slug: string) => {
-    const index = posts.findIndex(p => p.slug === slug)
+  const getAdjacentPosts = useCallback((slug: string) => {
+    const decodedSlug = decodeURIComponent(slug)
+    const index = posts.findIndex(p => p.slug === decodedSlug)
     if (index === -1) return { prevPost: null, nextPost: null }
 
     return {
       prevPost: index > 0 ? posts[index - 1] : null,
       nextPost: index < posts.length - 1 ? posts[index + 1] : null
     }
-  }
+  }, [posts])
 
   return (
     <PostContext.Provider value={{ posts, loading, error, getPostBySlug, getAdjacentPosts }}>

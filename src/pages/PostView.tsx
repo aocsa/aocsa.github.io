@@ -47,6 +47,7 @@ function PostView() {
 
     const meta = getPostBySlug(slug)
     if (!meta) {
+      console.error(`Post not found for slug: ${slug}`)
       setContentError('Post not found')
       setContentLoading(false)
       return
@@ -57,21 +58,31 @@ function PostView() {
     setContentLoading(true)
     setContentError(null)
 
-    // Fetch only the markdown content
-    fetch(`/posts/${meta.slug}.md`)
+    // Scroll to top on navigation
+    window.scrollTo(0, 0)
+
+    // Fetch the markdown content using an absolute path to avoid relative path issues
+    const contentUrl = `/posts/${meta.slug}.md`
+
+    fetch(contentUrl)
       .then(res => {
-        if (!res.ok) throw new Error('Post content not found')
+        if (!res.ok) {
+          console.error(`Failed to fetch content from ${contentUrl}: ${res.status} ${res.statusText}`)
+          throw new Error('Post content not found')
+        }
         return res.text()
       })
       .then(content => {
         // Remove the first H1 heading (title is shown in header)
-        const processedContent = content.replace(/^#\s+.+\n+/, '')
+        // More robust regex to handle potential whitespace/BOM and different newline formats
+        const processedContent = content.replace(/^[\s\ufeff]*#\s+[^\n]+\n+/, '')
 
         setReadingTime(calculateReadingTime(processedContent))
         setPost({ ...meta, content: processedContent })
         setContentLoading(false)
       })
       .catch(err => {
+        console.error('Content fetch error:', err)
         setContentError(err.message)
         setContentLoading(false)
       })
@@ -98,9 +109,40 @@ function PostView() {
   const isLoading = postsLoading || contentLoading
   const error = postsError || contentError
 
-  if (isLoading) return <div className="loading">Loading post...</div>
-  if (error) return <div className="error">Error: {error}</div>
-  if (!post) return <div className="error">Post not found</div>
+  if (isLoading) {
+    return (
+      <div className="post-view post-view-page post-view-clean is-loading">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p>Loading post...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="post-view post-view-page post-view-clean has-error">
+        <div className="error-container">
+          <h2>Error</h2>
+          <p>{error}</p>
+          <Link to="/posts" className="back-link">Back to all posts</Link>
+        </div>
+      </div>
+    )
+  }
+
+  if (!post) {
+    return (
+      <div className="post-view post-view-page post-view-clean not-found">
+        <div className="error-container">
+          <h2>Post Not Found</h2>
+          <p>The post you are looking for does not exist.</p>
+          <Link to="/posts" className="back-link">Back to all posts</Link>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="post-view post-view-page post-view-clean">
