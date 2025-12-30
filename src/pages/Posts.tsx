@@ -1,8 +1,8 @@
 import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { Post } from '../types/post'
-import { usePosts } from '../contexts/PostContext'
-import { formatDisplayDate } from '../utils/date-utils'
+import { Post } from '@/types/post'
+import { usePosts } from '@/contexts/PostContext'
+import { formatDisplayDate } from '@/utils/date-utils'
 
 // Maximum number of tags to display (most relevant first)
 const MAX_VISIBLE_TAGS = 8

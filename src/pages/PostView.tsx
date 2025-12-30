@@ -4,10 +4,10 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeSlug from 'rehype-slug'
-import { Post } from '../types/post'
+import { Post } from '@/types/post'
 
-import { usePosts } from '../contexts/PostContext'
-import { formatFullDate } from '../utils/date-utils'
+import { usePosts } from '@/contexts/PostContext'
+import { formatFullDate } from '@/utils/date-utils'
 
 function calculateReadingTime(content: string): number {
   const wordsPerMinute = 200

@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react'
-import { Post } from '../types/post'
-import { sortPostsTopologically } from '../utils/postSorting'
+import { Post } from '@/types/post'
+import { sortPostsTopologically } from '@/utils/postSorting'
 
 /**
  * Shape of the data and functions provided by the PostContext.
