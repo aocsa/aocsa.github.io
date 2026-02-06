@@ -38,6 +38,15 @@
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#ffffff">
 
+  <!-- Theme: prevent flash of wrong theme -->
+  <script>
+    (function() {
+      var t = localStorage.getItem('theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
   <!-- Start Single Page Apps for GitHub Pages -->
   <script type="text/javascript">
     // Single Page Apps for GitHub Pages

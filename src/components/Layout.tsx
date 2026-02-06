@@ -1,13 +1,33 @@
 import { ReactNode, useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import ThemeToggle, { type Theme } from '@/components/ThemeToggle'
 
 interface LayoutProps {
   children: ReactNode
 }
 
+function getInitialTheme(): Theme {
+  if (typeof window === 'undefined') {
+    return 'light'
+  }
+
+  const rootTheme = document.documentElement.getAttribute('data-theme')
+  if (rootTheme === 'light' || rootTheme === 'dark') {
+    return rootTheme
+  }
+
+  const storedTheme = window.localStorage.getItem('theme')
+  if (storedTheme === 'light' || storedTheme === 'dark') {
+    return storedTheme
+  }
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+}
+
 function Layout({ children }: LayoutProps) {
   const location = useLocation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [theme, setTheme] = useState<Theme>(getInitialTheme)
 
   const isActive = (path: string) => location.pathname === path
 
@@ -28,6 +48,15 @@ function Layout({ children }: LayoutProps) {
     }
   }, [mobileMenuOpen])
 
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    window.localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
+  }
+
   return (
     <div className="app-layout">
       {/* Header */}
@@ -37,27 +66,34 @@ function Layout({ children }: LayoutProps) {
             Alexander<span className="font-bold"> Ocsa</span>
           </Link>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            className="mobile-menu-toggle"
-            onClick={() => setMobileMenuOpen(true)}
-            aria-label="Toggle navigation menu"
-            aria-expanded={mobileMenuOpen}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </button>
+          <div className="header-actions">
+            <nav className="site-nav">
+              <Link to="/" className={isActive('/') ? 'active' : ''}>Home</Link>
+              <Link to="/posts" className={isActive('/posts') || location.pathname.startsWith('/posts/') ? 'active' : ''}>Posts</Link>
+              <Link to="/projects" className={isActive('/projects') ? 'active' : ''}>Projects</Link>
+              <Link to="/contact" className={`nav-contact ${isActive('/contact') ? 'active' : ''}`}>Contact</Link>
+            </nav>
+            <ThemeToggle theme={theme} onToggle={toggleTheme} />
+          </div>
 
-          <nav className="site-nav">
-            <Link to="/" className={isActive('/') ? 'active' : ''}>Home</Link>
-            <Link to="/posts" className={isActive('/posts') || location.pathname.startsWith('/posts/') ? 'active' : ''}>Posts</Link>
-            <Link to="/projects" className={isActive('/projects') ? 'active' : ''}>Projects</Link>
-            <Link to="/contact" className={`nav-contact ${isActive('/contact') ? 'active' : ''}`}>Contact</Link>
-          </nav>
+          {/* Mobile Controls */}
+          <div className="mobile-header-controls">
+            <ThemeToggle theme={theme} onToggle={toggleTheme} />
+            <button
+              className="mobile-menu-toggle"
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
+              type="button"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -69,6 +105,7 @@ function Layout({ children }: LayoutProps) {
             className="mobile-menu-close"
             onClick={() => setMobileMenuOpen(false)}
             aria-label="Close navigation menu"
+            type="button"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
